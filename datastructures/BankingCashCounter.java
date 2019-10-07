@@ -1,0 +1,73 @@
+package com.bridgelabz.datastructures;
+
+import com.bridgelabz.algorithmprograms.Utility;
+
+public class BankingCashCounter<T> {
+
+	public static void main(String[] args) {
+		BankingCashCounter<String> list= new BankingCashCounter<String>();
+		QueueUtility<String> list1 = new QueueUtility<String>();
+        System.out.println("***********Welcome to Cash Counter************");
+        int amount = 100000;
+		int amountWithdraw,amountDeposit,updatedBalance;
+		System.out.println("Enter the number of people :");
+		int number_people = Utility.integerScanner();
+		for (int i = 1; i <= number_people; i++) 
+		{
+			System.out.println("*****************************************************");
+			System.out.println("Enter the Name of "+i+ " person");
+			String name =Utility.stringScanner();
+			list1.enqueue(name);
+		}
+		while(list1.size()>0)
+		{
+			System.out.println("*************Transaction Portal*************");
+			System.out.println("****Enter 1. To Withdraw.");
+			System.out.println("****Press 2. To Deposit.");
+			System.out.println("****Press 3. To check Balance.");
+			int ch = Utility.integerScanner();
+			switch(ch)
+			{
+			case 1 :
+				
+				System.out.println("Enter the amount to Withdraw :");
+				amountWithdraw =Utility.integerScanner();
+				if(amountWithdraw > amount)
+				{
+					System.out.println("Not Enough Balance");
+				}
+				else
+				{
+					amount = amount - amountWithdraw;
+					System.out.println("Amount withdrawn Successfully.");
+					System.out.println("Remaining Balance : " + amount);
+					
+				}
+				System.out.println("Person is Dequeued");
+				list1.dequeue();
+				System.out.println("**************************************");
+				System.out.println("People In Queue ");
+				list1.display();
+				
+				break;
+			case 2 :
+				
+				System.out.println("Enter the amount to Deposit :");
+				amountDeposit =Utility.integerScanner(); 
+				amount = amount + amountDeposit;
+				System.out.println("Updated Balance : " + amount);
+				list1.dequeue();
+				System.out.println("People In Queue ");
+				list1.display();
+				break;
+			case 3 :
+				System.out.println("Updated Balance :" + amount);
+				break;
+			}
+			
+		
+		
+		}
+	}
+
+}
