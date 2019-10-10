@@ -1,14 +1,25 @@
 package com.bridgelabz.algorithmprograms;
 import java.util.Arrays;
+/**
+ * Anagram of string to check Both string are Anagram or not.
+ * @author admin1
+ *
+ */
 public class AnagramofStrings {
 
-	
+	/**
+	 * This main method is to test AnagramofStrings class
+	 * @param args0 = str1
+	 * @param args1 =sr2
+	 */
 	public static void main(String[] args) {
-		System.out.println("Enter the first String :");
-	    String str1 = Utility.stringScanner();
+		System.out.println("Enter the first String :");   
+	    String str1 = Utility.stringScanner();             //Enter the String 1
 	    System.out.println("Enter the Second String :");
-	    String str2 = Utility.stringScanner();
-        Utility.isAnagram(str1,str2);
+	    String str2 = Utility.stringScanner();             //Enter the String 2
+        //isAnagram is a method in Utility class to check Anagram of Strings
+	    Utility.isAnagram(str1,str2);       
+        
 	}
 
 }

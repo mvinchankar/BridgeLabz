@@ -1,17 +1,17 @@
 package com.bridgelabz.datastructures;
 //Node Implementation of the Stack using LinkedList 
-class Node1{
+class Node2{
  int data;          //character value to store the parenthesis values
  Node1 nextNode;      //Link to the next node
  
- public Node1(int value){
+ public Node2(int value){
  data = value;
  nextNode = null;
  }
 }
  
 //Stack Utility
-class StackUtility{
+class stackgeneric{
  Node1 head = null;         //Header or Top Node of the Stack
  
  //Push operation of the Stack

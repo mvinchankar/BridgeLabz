@@ -1,20 +1,17 @@
 package com.bridgelabz.functional;
 import java.util.Scanner;
+/**
+ * String Replace
+ * @author admin1
+ *
+ */
 public class Stringreplace {
-
-	Utility util = new Utility();
-	
-	public String accept(){
-		
-		System.out.println("Enter the Username :");
-		String name = util.stringScanner();
-		return name;
-	}
-	public static void main(String[] args) {
-		Stringreplace f=new Stringreplace();
-		
+  public static void main(String[] args) {
 		String str= "Hello <<UserName>>, How are you?";
-		System.out.println(str.replaceAll("<<UserName>>",f.accept()));
-	}
+		System.out.println(str.replaceAll("<<UserName>>",Utility.accept()));        
+	    /**
+	     * String.replaceAll method to change username with valid name
+	     */
+  }
 
 }

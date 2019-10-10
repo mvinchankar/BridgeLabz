@@ -13,26 +13,27 @@ public class Orderedlist {
 
 	public static void main(String[] args) throws IOException  {
 		 int count =0,flag=1;
-		  GenericUtility<Integer> util = new GenericUtility<Integer>();
+		  GenericUtility<String> util = new GenericUtility<String>();
 		  File file=new File("/home/admin1/Desktop/aa");     
 	      Scanner fileinput;
 		
 			fileinput = new Scanner(file).useDelimiter(",");
 		  
-	      int line;
-	      while(fileinput.hasNextInt())
+	      String line ="";
+	      while(fileinput.hasNext())
 	 	 {
-	 		  util.addelement(fileinput.nextInt());
+	 		 line = fileinput.next();
+	 		 util.addelement(line);
 	 	 }
 	   //   util.print();
 	      util.sortList();
-	      util.print();
+	//      util.print();
 	      System.out.println("Enter the number to be searched :");
-	      int num = Utility.integerScanner();
+	      String userinput = Utility.stringScanner();
 	      com.bridgelabz.datastructures.GenericUtility.Node traversingNode = util.head;
 	      while((traversingNode) !=null) 
 	 	 {
-	 		 if(traversingNode.data.equals(num))
+	 		 if(traversingNode.data.equals(userinput))
 	 		 {
 	 			 util.remove(count);
 	 			 flag =0;
@@ -43,12 +44,12 @@ public class Orderedlist {
 	 	 
 	 	 if(flag==1)
 	 	 {
-	 		 util.addelement(num);
+	 		 util.addelement(userinput);
 	 	 }
 	 	 
 	 	 Writer writer = new PrintWriter("/home/admin1/Desktop/output");
 	 	 com.bridgelabz.datastructures.GenericUtility.Node traversingNode1 =util.head;
-	 	 while((traversingNode1)!=null && (traversingNode1.data) !=null)
+	 	 while((traversingNode1.next)!=null && (traversingNode1.data) !=null)
 	 	 {
 	 		 writer.write(traversingNode1.data +"\n");
 	 		 traversingNode1 = traversingNode1.next;
@@ -56,12 +57,11 @@ public class Orderedlist {
 	 	 }
 	 	 writer.write(traversingNode1.data+"");
 	 	 writer.close();
-		}
 		
 	
 	 	 
 	 	
-	      
+	}      
 	      
 	}
 

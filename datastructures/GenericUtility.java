@@ -63,7 +63,7 @@ public class GenericUtility<T> {
 	public void remove(int key)
 	{
 		Node temp = head;
-		Node previous = null;
+	
 		if(key==0)
 		{
 			head =temp.next;
@@ -71,26 +71,18 @@ public class GenericUtility<T> {
 			return;
 			
 		}
-		//Remove last
-		
-		/* while(temp.next != null)
-		 {
-			 if(temp.next == last)
-			 {
-				 temp.next = null;
-				 return;
-			 }
-			 temp = temp.next;
-		 }*/
+	
 		
 		for (int i=0; temp!=null && i<key-1; i++) 
-            temp = temp.next; 
+		    temp = temp.next; 
+		   
 		
-			 if (temp == null || temp.next == null) 
-		     return; 
+		 System.out.println("Found and Deleted");
+	    if (temp == null || temp.next == null) 
+		    return; 
 			 
-			 Node next = temp.next.next; 
-			 temp.next = next;
+	    Node next = temp.next.next; 
+	        temp.next = next;
 		
 		
 		

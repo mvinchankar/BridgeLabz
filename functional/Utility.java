@@ -34,6 +34,22 @@ public class Utility {
     	Float inputfloat =scanner.nextFloat();
     	return inputfloat;
     }
+    
+    
+ /**
+  * Method for String Replace   
+  * @return
+  */
+public static String accept(){
+		
+		System.out.println("Enter the Username :");
+		String name = Utility.stringScanner();            //Enter the String to replace
+		if(name.isEmpty())
+		{
+			System.out.println("Not Valid");
+		}
+		return name;                                      //return the username
+	}
 
 public static void flipResult(int num) {
 		
@@ -128,7 +144,7 @@ public static void functionGenerator(int numberofiterations, int a[],int count) 
     
     for (int i = 0; i < numberofiterations; i++) {
 	   
-	int coupon = (int)(Math.random() * 9) + (int)Math.random();
+	int coupon = (int)(Math.random() * 999) +10000;
 	count =count +1;
 	System.out.println(coupon);
 	a[i] = coupon;

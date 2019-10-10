@@ -1,5 +1,4 @@
 package com.bridgelabz.algorithmprograms;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -7,8 +6,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Utility {
+	
 static Scanner scanner = new Scanner(System.in);
 public static int integerScanner() 
 {
@@ -37,20 +38,28 @@ public static float floatScanner()
 	return inputfloat;
 }
 
-public static void isAnagram(String s1, String s2)
+
+/**
+ * isAnagram method to check whether the string are Anagram or not
+ * @param string1
+ * @param string2
+ */
+public static void isAnagram(String string1, String string2)
 {
  
-	char[] c1 = s1.toCharArray();
-	char[] c2 = s2.toCharArray();
+	char[] c1 = string1.toCharArray();                  
+	char[] c2 = string2.toCharArray();
 	
 	if(c1.length == c2.length)
 	{
-		Arrays.sort(c1);
-		Arrays.sort(c2);
+		Arrays.sort(c1);                                  //Sort the Char Array C1
+		Arrays.sort(c2);                                  //Sort the Char Array C2
 	}
-	String s3 = new String(c1);
+	String s3 = new String(c1);                           //Put the Array elements into the String
 	String s4 = new String(c2);
-	if(s3.equalsIgnoreCase(s4))
+	
+	//Compare the Strings
+	if(s3.equalsIgnoreCase(s4))                           
 	{
 		System.out.println("Are Anagrams");;
 	}
@@ -59,36 +68,17 @@ public static void isAnagram(String s1, String s2)
 		System.out.println("Not Anagrams");
 	}
 }
-    
-  
-public static void isPrime(int num) {
-	int count = 0;
-    String [] array=new String [1000];
-	
-	for (int i = 2; i<=num; i++) 
-	{
-		int cn=i;
-		count = 0;
-		for (int j = 2; j <= cn/2; j++) 
-		{
-		    if (cn % j == 0) 
-		    {
-		      array[count] =String.valueOf(cn);
-		      count++;
-              //break;
-		    }
-	    }
-	    if(count == 0) 
-	    {
-    	  System.out.println(" "+ cn); 
-        }
-	}
-}
-public static void isPalindrome(int num) 
-{
-	int count  = 0;
-	String [] a=new String [1000];
-	for (int i = 2; i<num; i++) 
+
+/**
+ * Prime Method to find Prime series
+ * @param range
+ */
+public static int [] Prime(int range) {
+    int count  = 0;
+    ArrayList<Integer> list= new ArrayList<>();
+    int []array  = new int[1000];
+ 	String [] a=new String [1000];
+	for (int i = 2; i<range; i++) 
 	{
 		int cn=i;
 		count = 0;
@@ -98,19 +88,33 @@ public static void isPalindrome(int num)
 		    {
 		      a[count] =String.valueOf(cn);
 		      count++;
-		      
-              //break;
 		    }
 		}
 	  if(count == 0) 
-	  {
-	    int temp = cn;
+	  array[i] = cn;
+    }
+	return array;
+}
+    
+
+
+ /**
+  * isPalindrome Method to find Palindrome Numbers 
+  * @param num
+  */
+public static void isPalindrome(int range) 
+{
+	int [] array =Utility.Prime(range);
+	for (int i = 0; i < array.length; i++) {
+		if(array[i]!=0)
+		{
+		int temp = array[i]; 
 	    int sum = 0;
-	    while(cn>0) 
+	    while(array[i]>0) 
 	    {
-			int rem = cn%10;
+			int rem = array[i]%10;
 	    	sum = (sum*10) + rem;
-	    	cn = cn/10;
+	    	array[i] = array[i]/10;
 	    }
 	    if(temp == sum)
 	    {
@@ -122,11 +126,17 @@ public static void isPalindrome(int num)
 	}
 
   }
- public static boolean isPrimeAnagram(int a1, int a2)
+/**
+ * isPrimeAnagram Method to check whether the numbers are Anagram or not
+ * @param value1
+ * @param value2
+ * @return
+ */
+ public static boolean isPrimeAnagram(int value1, int value2)
  {
 	 boolean flag = false;
-	 String s1 = String.valueOf(a1);
-	 String s2 = String.valueOf(a2);
+	 String s1 = String.valueOf(value1);
+	 String s2 = String.valueOf(value2);
 	 
 	 char[] c1 = s1.toCharArray();
 	 char[] c2 = s2.toCharArray();
@@ -144,37 +154,27 @@ public static void isPalindrome(int num)
 	 }
 	 return false;
  }
- public static void printAnagram(int number)
+ 
+ /**
+  * printAnagram method to find Anagram in Primenumber Series
+  * @param range
+  * @return
+  */
+ public static int [] printAnagram(int range)
  {
-	   int[] prime = new int [number];
-	   for (int i = 2; i < number; i++) 
-	   {
-		  int  count = 0;
-		  for (int j = 2; j <= i / 2; j++) 
-		  {
-		    if (i % j == 0) 
-		    {
-		    count++;
-		    }
-		  }
-
-		  if (count == 0) 
-		  {
-             prime[i] = i ;
-		  }
-		  if(prime[i] != 0)
-		  for (int j = 1; j <prime.length; j++) 
-		  {
-			   if(prime[i] != prime[j])
-			   {
-			     if(Utility.isPrimeAnagram(prime[i],prime[j]))
-			     {
-				   System.out.println(prime[i]+ " isAnagramsof  " +prime[j]);
-			     }
-			   }
-		  }
-	    }
-
+	   int [] anagram = new int [range];
+	   int[] prime = Utility.Prime(range);
+	   //Initialize position to zero
+	   int position =0;                                        
+	  for (int i = 0; i < prime.length; i++) {
+		 if(prime[i] != 0)
+		  for (int j = 1; j <prime.length; j++)  
+		   if(prime[i] != prime[j])                            
+			if(Utility.isPrimeAnagram(prime[i],prime[j]))       //isPrimeAnagram method to check whether the number are Anagram or not
+	         anagram[position++] = prime[j];
+	  }
+	  //return the anagram 
+     return anagram;                                              
 }
  
 public static int binarySearchIntegers(int array[],int first,int last, int index) 
@@ -316,9 +316,7 @@ public static void CelsiustoFahrenhiet(double celsius)
 		float n = 12*year;
 		float r = rateofinterest/(12*100);
 		double divisor = Math.pow((1+r), -n);
-		//System.out.println(divisor);
-        double p = principal_loan *r;
-//	System.out.println(p);
+	    double p = principal_loan *r;
 	    double payment = (p)/(1-(divisor));
         System.out.println("Payment will be :" + payment +"Rs.");	
 }
