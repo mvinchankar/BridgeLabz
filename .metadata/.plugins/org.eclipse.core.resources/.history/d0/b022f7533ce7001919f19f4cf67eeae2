@@ -1,0 +1,7 @@
+package com.bridgelabz.datastructures;
+
+public class linked<T> {
+       linked<T> next;
+       T data;
+	
+}

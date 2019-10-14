@@ -1,0 +1,15 @@
+package com.bridgelabz.functional;
+
+public class WindChill {
+
+	
+	public static void main(String[] args) {
+		System.out.println("ENter the value of t :");
+		int t = Utility.integerScanner();
+		System.out.println("Enter the value of v :");
+		int v = Utility.integerScanner();
+		Utility.windChill(t,v);
+
+	}
+
+}

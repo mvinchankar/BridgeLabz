@@ -1,0 +1,33 @@
+package com.bridgelabz.datastructures;
+
+import com.bridgelabz.algorithmprograms.Utility;
+
+public class PalindromeChecker<T> {
+
+	public static void main(String[] args) {
+		PalindromeChecker<String> p = new PalindromeChecker<String>();
+		DequeueUtility<String>d = new DequeueUtility<String>();	
+		System.out.println("Enter the String to check whether it is Palindrome or Not :");
+				String string = Utility.stringScanner();
+				char[] array = string.toCharArray();
+				for (Character c : array)
+				{
+					d.insertLast(c.toString());
+				}
+				d.displayForward();
+		String reverseString = "";
+		for (int i = 0; i < array.length; i++) {
+			reverseString = reverseString + (d.removeLast());
+		}		
+		if(string.equals(reverseString.toString()))
+		{
+			System.out.println("True");
+		}
+		else
+		{
+			System.out.println("False");
+		}
+		
+	}
+
+}

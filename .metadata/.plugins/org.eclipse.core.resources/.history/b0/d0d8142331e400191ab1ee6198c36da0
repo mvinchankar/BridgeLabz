@@ -1,0 +1,42 @@
+package com.bridgelabz.algorithmprograms;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
+public class BinarySearchWordlist {
+
+	public static void readFromFile() throws IOException {
+		File f=new File("/home/admin1/Desktop/aa");     
+	      FileReader fr=new FileReader(f);   
+	      Scanner br=new Scanner(fr);
+	      br.useDelimiter(",");
+	    ArrayList<String> list = new ArrayList<>();
+	    while (br.hasNext()){
+	        list.add(br.next());
+	    }
+	   
+	    br.close();
+	    System.out.println(list);
+	    String []str = new String[4];
+	    for (int i = 0; i < str.length; i++) {
+			str[i] = list.get(i);
+		}
+	    for (int i = 0; i < str.length; i++) 
+	    {
+		  System.out.println(str[i]);
+		}
+	    System.out.println("Enter the string to be searched :"); 
+		String key = Utility.stringScanner();
+		Utility.stringBinarySearch(str, key, 4);
+
+	}
+	public static void main(String[] args) throws IOException {
+	
+		readFromFile();
+    
+
+}
+}

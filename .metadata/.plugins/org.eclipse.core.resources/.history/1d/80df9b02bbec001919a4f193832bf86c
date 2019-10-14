@@ -1,0 +1,46 @@
+/**
+ * 
+ */
+package com.bridgelabz.datastructures;
+
+import com.bridgelabz.algorithmprograms.Utility;
+
+/**
+ * @author admin1
+ *
+ */
+public class Calendar {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		System.out.println("Enter the Month :");
+		int month = Utility.integerScanner();
+		System.out.println("Enter the year :");
+		int year = Utility.integerScanner();
+		if(month>0 && month <13)
+		{
+			System.out.println("Month : "+month);
+		}
+		if(year>0)
+		{
+			System.out.println("Year :" + year);
+		}
+		int row = 7,column = 7;
+		String [][] array = new String [row][column];
+		array[0][0] = "Sunday";
+		array[0][1] = "Monday";
+		array[0][2] = "Tuesday";
+		array[0][3] = "Wednesday";
+		array[0][4]	= "Thursday";			
+        array[0][5] = "Friday";
+        array[0][6]	= "Saturday";
+        
+			}
+			
+		}
+		
+	}
+
+}

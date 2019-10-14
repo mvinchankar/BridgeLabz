@@ -1,0 +1,7 @@
+package com.bridgelabz.datastructures;
+
+public class linkedaa<T> {
+    linkedaa<T> next;
+    T data;
+	
+}

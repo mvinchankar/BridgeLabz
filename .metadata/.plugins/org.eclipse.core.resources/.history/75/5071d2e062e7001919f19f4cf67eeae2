@@ -1,0 +1,135 @@
+package com.bridgelabz.datastructures;
+
+import java.util.List;
+
+import com.bridgelabz.algorithmprograms.Utility;
+
+public class LinkedLists<T> {
+
+	
+	public static class Node<T>
+	{
+		T data;
+		private Node next;
+		public Node getNext() {
+			return next;
+		}
+		public void setNext(Node next) {
+			this.next = next;
+		}
+		
+	}
+	
+	Node head;
+	 public static void printList(LinkedLists list) 
+	    { 
+	        Node currentNode = list.head; 
+	   
+	        System.out.print("LinkedList: "); 
+	   
+	        // Traverse through the LinkedList 
+	        while (currentNode != null) { 
+	            // Print the data at current node 
+	            System.out.print(currentNode.data + " "); 
+	   
+	            // Go to next node 
+	            currentNode = currentNode.getNext(); 
+	        } 
+	    } 
+	 public  void insert(T data) 
+	    { 
+	        // Create a new node with given data 
+	        Node newnode = new Node(); 
+	        newnode.data = data;
+	        newnode.setNext(null); 
+	  
+	        // If the Linked List is empty, 
+	        // then make the new node as head 
+	        if (head == null) { 
+	            head = newnode; 
+	        } 
+	        else { 
+	            // Else traverse till the last node 
+	            // and insert the new_node there    
+	            Node last = head; 
+	            while (last.getNext() != null) { 
+	                last = last.getNext(); 
+	            } 
+	  
+	            // Insert the new_node at last node  
+	            last.setNext(newnode); 
+	        } 
+	        
+	        
+	      
+	         
+	    }
+	private void deleteByKey(T key) 
+    { 
+	        // Store head node 
+	        Node temp = head;
+	        Node prev = null;  
+       	   	      
+	        if (temp != null && temp.data == key) 
+	        { 
+	            head = temp.getNext(); // Changed head 
+	  
+	            // Display the message 
+	            System.out.println(key + " found and deleted"); 
+	              return;
+	            // Return the updated List 
+	            
+	        }
+    
+	  
+	      
+       while (temp != null && temp.data != key) { 
+            
+            prev = temp; 
+            temp = temp.getNext(); 
+        } 
+  
+     
+        
+	
+  
+        if (temp == null) { 
+            // Display the message 
+            System.out.println(key + " not found");
+            return;
+        } 
+       prev.setNext(temp.getNext());
+       display();
+  
+        
+       
+    } 
+ 
+ 
+	 
+	 public void display() {
+		 
+	 Node currentNode = head;
+     while (currentNode != null) { 
+         // Print the data at current node 
+         System.out.print(currentNode.data + " "); 
+
+         // Go to next node 
+         currentNode = currentNode.getNext(); 
+     } 
+	 }
+	public static void main(String[] args) {
+		LinkedLists<Integer> f = new LinkedLists<Integer>();
+		System.out.println("How many elements you want to store in linkedlist : ");
+		int numberoftimes = Utility.integerScanner();
+		System.out.println("Enter the elements");
+		for (int i = 0; i < numberoftimes; i++) {
+			int num = Utility.integerScanner();
+			f.insert(num);
+		}
+		f.deleteByKey(0);
+		f.display();
+		//printList(f);
+		
+	}
+}

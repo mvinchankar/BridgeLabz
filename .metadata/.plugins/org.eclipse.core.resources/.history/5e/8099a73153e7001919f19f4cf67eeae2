@@ -1,0 +1,74 @@
+package com.bridgelabz.datastructures;
+
+import java.util.List;
+
+import com.bridgelabz.algorithmprograms.Utility;
+
+public class LinkedLists {
+
+	Node head;
+	static class Node
+	{
+		int data;
+		Node next;
+		Node(int d)
+		{
+			data =d;
+			next =null;
+		}
+	}
+	 public static void printList(LinkedLists list) 
+	    { 
+	        Node currentNode = list.head; 
+	   
+	        System.out.print("LinkedList: "); 
+	   
+	        // Traverse through the LinkedList 
+	        while (currentNode != null) { 
+	            // Print the data at current node 
+	            System.out.print(currentNode.data + " "); 
+	   
+	            // Go to next node 
+	            currentNode = currentNode.next; 
+	        } 
+	    } 
+	 public static LinkedLists insert(LinkedLists list, int data) 
+	    { 
+	        // Create a new node with given data 
+	        Node newnode = new Node(data); 
+	        newnode.next = null; 
+	  
+	        // If the Linked List is empty, 
+	        // then make the new node as head 
+	        if (list.head == null) { 
+	            list.head = newnode; 
+	        } 
+	        else { 
+	            // Else traverse till the last node 
+	            // and insert the new_node there    
+	            Node last = list.head; 
+	            while (last.next != null) { 
+	                last = last.next; 
+	            } 
+	  
+	            // Insert the new_node at last node  
+	            last.next = newnode; 
+	        } 
+	  
+	        // Return the list by head 
+	        return list; 
+	    } 
+	
+	public static void main(String[] args) {
+		LinkedLists f = new LinkedLists();
+		System.out.println("How many elements you want to store in linkedlist : ");
+		int numberoftimes = Utility.integerScanner();
+		System.out.println("Enter the elements");
+		for (int i = 0; i < numberoftimes; i++) {
+			int num = Utility.integerScanner();
+			f = insert(f,num);
+		}
+		printList(f);
+		
+	}
+}

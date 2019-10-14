@@ -1,0 +1,21 @@
+package com.bridgelabz.functional;
+public class Stopwatch { 
+
+   public static void main(String[] args) {
+      
+	     
+	   System.out.println("1. Start");
+	   System.out.println("2.Stop");
+	   System.out.println("3. ElapsedTime :");
+	   
+	  
+			   int  starttime = (int) System.currentTimeMillis();
+			   System.out.println("Enter a key");
+			   String k = Utility.stringScanner();
+			   int endtime  = (int)System.currentTimeMillis();			
+			  
+			  int  elapsedtime = endtime - starttime;
+			    System.out.println(elapsedtime);
+	
+  }
+}

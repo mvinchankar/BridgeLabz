@@ -1,0 +1,17 @@
+package com.bridgelabz.algorithmprograms;
+
+public class Insertionsort {
+
+	public static void main(String[] args) {
+		System.out.println("Enter the size :");
+		int size = Utility.integerScanner();
+		String []string = new String[size];
+		System.out.println("Enter the elements in List :");
+		for (int i = 0; i < string.length; i++) {
+			string[i] = Utility.stringScanner();
+		}
+		Utility.insertionsort_String(string, size);
+
+	}
+
+}

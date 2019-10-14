@@ -1,0 +1,31 @@
+package com.bridgelabz.algorithmprograms;
+
+import java.util.Scanner;
+
+public class DecimalToBinary {
+
+	public static void toBinary(int num) {
+		
+		int []array = new int [8];
+			int i =0;
+		while(num>0)
+		{
+			array[i] = num%2;
+			num = num/2;
+			i++;
+		}
+		for (int j = 0; j < array.length; j++) {
+			
+
+			System.out.println(array[j]);
+		}
+		
+	}
+	
+	
+	public static void main(String[] args) {
+		System.out.println("Enter the Number in Decimal :");
+		int num = Utility.integerScanner();
+		toBinary(num);
+	}
+}

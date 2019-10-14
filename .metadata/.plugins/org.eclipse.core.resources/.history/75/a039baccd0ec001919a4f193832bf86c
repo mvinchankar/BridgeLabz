@@ -1,0 +1,656 @@
+package com.bridgelabz.algorithmprograms;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
+import java.util.ArrayList;
+
+public class Utility {
+	
+static Scanner scanner = new Scanner(System.in);
+public static int integerScanner() 
+{
+	
+	int inputInteger = scanner.nextInt();
+	return inputInteger;
+	
+}
+
+public static double doubleScanner()
+{
+	double inputdouble = scanner.nextDouble();
+	return inputdouble;
+}
+
+public static String stringScanner() 
+{
+
+	String inputString = scanner.next();
+	return inputString;
+}
+
+public static float floatScanner()
+{
+	float inputFloat =scanner.nextFloat();
+	return inputFloat;
+}
+
+
+/**
+ * isAnagram method to check whether the string are Anagram or not
+ * @param string1
+ * @param string2
+ */
+public static void isAnagram(String string1, String string2)
+{
+ 
+	char[] c1 = string1.toCharArray();                  
+	char[] c2 = string2.toCharArray();
+	
+	if(c1.length == c2.length)
+	{
+		Arrays.sort(c1);                                  //Sort the Char Array C1
+		Arrays.sort(c2);                                  //Sort the Char Array C2
+	}
+	String s3 = new String(c1);                           //Put the Array elements into the String
+	String s4 = new String(c2);
+	
+	//Compare the Strings
+	if(s3.equalsIgnoreCase(s4))                           
+	{
+		System.out.println("Are Anagrams");;
+	}
+	else
+	{
+		System.out.println("Not Anagrams");
+	}
+}
+
+/**
+ * Prime Method to find Prime series
+ * @param range
+ */
+public static int [] Prime(int range) {
+    int count  = 0;
+    ArrayList<Integer> list= new ArrayList<Integer>();
+    int []array  = new int[1000];
+ 	String [] a=new String [1000];
+	for (int i = 2; i<range; i++) 
+	{
+		int cn=i;
+		count = 0;
+		for (int j = 2; j <= cn/2; j++) 
+		{
+		    if (cn % j == 0) 
+		    {
+		      a[count] =String.valueOf(cn);
+		      count++;
+		    }
+		}
+	  if(count == 0) 
+	  array[i] = cn;
+    }
+	return array;
+}
+    
+
+
+ /**
+  * isPalindrome Method to find Palindrome Numbers 
+  * @param num
+  */
+public static void isPalindrome(int range) 
+{
+	int [] array =Utility.Prime(range);
+	for (int i = 0; i < array.length; i++) {
+		if(array[i]!=0)
+		{
+		int temp = array[i]; 
+	    int sum = 0;
+	    while(array[i]>0) 
+	    {
+			int rem = array[i]%10;
+	    	sum = (sum*10) + rem;
+	    	array[i] = array[i]/10;
+	    }
+	    if(temp == sum)
+	    {
+	      System.out.println("  "+temp);	
+
+	    }
+      }
+	
+	}
+
+  }
+/**
+ * isPrimeAnagram Method to check whether the numbers are Anagram or not
+ * @param value1
+ * @param value2
+ * @return
+ */
+ public static boolean isPrimeAnagram(int value1, int value2)
+ {
+	 boolean flag = false;
+	 String s1 = String.valueOf(value1);
+	 String s2 = String.valueOf(value2);
+	 
+	 char[] c1 = s1.toCharArray();
+	 char[] c2 = s2.toCharArray();
+	
+	 if(c1.length == c2.length)
+	 {
+		Arrays.sort(c1);
+		Arrays.sort(c2);
+	 }
+	 String s3 = new String(c1);
+	 String s4 = new String(c2);
+	 if(s3.equals(s4))
+	 {
+		return true;
+	 }
+	 return false;
+ }
+ 
+ /**
+  * printAnagram method to find Anagram in Primenumber Series
+  * @param range
+  * @return
+  */
+ public static int [] printAnagram(int range)
+ {
+	   int [] anagram = new int [range];
+	   int[] prime = Utility.Prime(range);
+	   //Initialize position to zero
+	   int position =0;                                        
+	  for (int i = 0; i < prime.length; i++) {
+		 if(prime[i] != 0)
+		  for (int j = 1; j <prime.length; j++)  
+		   if(prime[i] != prime[j])                            
+			if(Utility.isPrimeAnagram(prime[i],prime[j]))       //isPrimeAnagram method to check whether the number are Anagram or not
+	         anagram[position++] = prime[j];
+	  }
+	  //return the anagram 
+     return anagram;                                              
+}
+ 
+ /**
+  * binarySearchIntegers is an method to find an elements in an SortedArray
+  * @param array
+  * @param first
+  * @param last
+  * @param index
+  * @return
+  */
+public static int binarySearchIntegers(int array[],int first,int last, int index) 
+{ 
+      if (last >= first) 
+      { 
+            int mid = first + (last - first) / 2;                //first find the middle element               
+            if (array[mid] == index)                             //compare middle element with index    
+                return mid; 
+            if (array[mid] > index)                                
+                return binarySearchIntegers(array, first, mid - 1, index);          //if middle element is greater then make first to middle-1 
+            return binarySearchIntegers(array, mid + 1, last, index);               //or make last to middle+1
+      } 
+  
+      return -1; 
+ } 
+
+
+/**
+ * StringBinarySearch method is used for searching a String in an SortedArray
+ * @param array
+ * @param key
+ * @param length
+ */
+public static void stringBinarySearch(String array[],String key, int length)
+{ 
+	    int first = 0 ;                                         //initialize first to zero
+	    int last = array.length; 
+	    System.out.println(Arrays.toString(array));
+	   
+	    while (first <= last)  
+	    { 
+	        int  mid = first + (last-first)/2;                  //find the middle index 
+		    int index = key.compareTo(array[mid]);              //compare the middle element to key
+		    if(index > 0) 
+		          first = mid + 1;                              //make first to mid+1 
+		    else if (index == 0) 
+		    {
+		       System.out.println("String found at :" + mid);   //if index equals to mid string found at middle
+	           break;
+	        }
+	        else
+	    	   last = mid - 1; 	                                //else make last to mid -1 
+        }
+    
+         if(first > last)                                       
+    	System.out.println("Not  Present");
+}
+
+/**
+ * Insertion Sort is a method to sort the String Array
+ * @param array
+ * @param f
+ * @return
+ */
+public static String[] insertionsortString(String array[], int f)
+{
+	String temp="";                                             //take a string temp as null
+	for(int i=0;i<f;i++)
+	{
+	  for(int j=i+1;j<f;j++)
+	  {
+	    if(array[i].compareToIgnoreCase(array[j])>0)            //compare the Array elements using .compareToIgnoreCase   
+	    {
+	     temp = array[i];                                       //swap the greater string lexicographically 
+ 	     array[i]=array[j];
+	     array[j]=temp;
+	    }
+	  }
+	}
+	  return array;
+}
+/**
+ * Insertion sort is a method to sort the Array elements(integers)
+ * @param array
+ */
+public static void insertionSort(int array[]) 
+{  
+     int n = array.length;  
+     for (int j = 1; j < n; j++)
+     {  
+         int key = array[j];                                    //make array element to key 
+         int i = j-1;                                           //make i to j-1   
+         while ( (i > -1) && ( array[i] > key ) )               //compare the current element with previous element 
+         {  
+             array[i+1] = array[i];                             //if element is greater then change the position to next 
+             i--;  
+         }  
+         array[i+1] = key;                                      //make key position to next position in Array
+     }  
+}  
+
+/**
+ * bubbleSort is a method which sort the Given Array of Integers
+ * In bubble sort algorithm, array is traversed from first element to last element. 
+ * Here, current element is compared with the next element. 
+ * If current element is greater than the next element, it is swapped.
+ * @param array
+ */
+ public static void bubbleSort(int[] array)
+ {  
+       
+    int temp = 0;  
+     for(int i=0; i < array.length; i++)
+     {  
+             for(int j=1; j < (array.length-i); j++)
+             {  
+                      if(array[j-1] > array[j])                  //If current element is greater than the next element, it is swapped.
+                      {  
+                             //swap elements  
+                             temp = array[j-1];  
+                             array[j-1] = array[j];  
+                             array[j] = temp;  
+                      }  
+                      
+             }  
+     }  
+  
+ }  
+
+ /**
+  * bubbleSort is a method which sort the Given Array of Integers
+  * In bubble sort algorithm, array is traversed from first element to last element. 
+  * Here, current element is compared with the next element. 
+  * If current element is greater than the next element, it is swapped.
+  * @param array
+  * @param n
+  */
+ public static void sortStrings(String[] array, int n)  
+ { 
+        String temp; 
+        for (int j = 0; j < n ; j++) 
+        { 
+            for (int i = j + 1; i < n; i++)  
+            { 
+                if (array[j].compareTo(array[i]) > 0)      //comparing the present element with next element in an String Array
+                { 
+                	//swapping of elements
+                    temp = array[j]; 
+                    array[j] = array[i]; 
+                    array[i] = temp; 
+                } 
+            } 
+            System.out.println(array[j]);
+        } 
+ }
+ 
+ 
+/**
+ * DaysofWeek is a method to find a particular day in a year  
+ * @param day
+ * @param month
+ * @param year
+ * @return 
+ */
+public static int daysOfWeek(int day,int month,int year) 
+{
+	 String []array ={"Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"};
+	 int y = 0,x;
+	if(day <=31 && day>0 && year>0 && month>0 && month<13)
+	{
+		y = year - (14-month)/12;
+		x = y +(y/4) - (y/100) +(y/400);
+		int m = month +12 *((14-month)/12)-2;
+		int d = (day+x+(31*m)/12)%7;
+		System.out.println(array[d]);
+	}
+	else
+	{
+		System.out.println("Enter valid Details!!!!!!");
+	}
+	return day;
+}
+
+/**
+ * CelsiusToFahrenhiet is a method to convert celsius to Fahrenhiet
+ * @param celsius
+ */
+public static void CelsiustoFahrenhiet(double celsius)
+{
+		double result = (celsius *9/5)+32;
+		System.out.println(result);
+}
+
+/**
+ * FahrenhietToCelsius is a method to convert F to Celsius
+ * @param fahrenhiet
+ */
+public static void FahrenhiettoCelsius(double fahrenhiet) 
+{
+	double result = (fahrenhiet-32)*5/9;
+	System.out.println(result);
+}
+
+/**
+ *monthlypaymentCalculate is a method to find Monthly Payment  
+ * @param year
+ * @param principal_loan
+ * @param rateofinterest
+ */
+public static void monthlypaymentCalculate(int year,int principal_loan,float rateofinterest) 
+{
+	if(year>0)
+	{
+	 float n = 12*year;
+	 float r = rateofinterest/(12*100);
+	 double divisor = Math.pow((1+r), -n);                     
+     double p = principal_loan *r;
+     double payment = (p)/(1-(divisor));
+     System.out.println("Payment will be :" + payment +"Rs.");	
+
+	}
+	else
+	{
+		System.out.println("Enter the correct Year!!!!");
+	}
+}
+
+/**
+ * sqrt method is used to find the square root of the number
+ * @param c
+ */
+public static void sqrt(double c) {
+	
+		
+		double t = c;
+		double epsilon = 1E-15;
+		while(Math.abs(t - c/t) > epsilon*t)
+		{
+			t = ((c/t) + t)/2;                 //formula to find square root of number 
+		}
+		System.out.println(t);
+		
+		
+
+	}
+
+/**
+ * readFromFile method is a method to read elements from a File
+ * @throws IOException
+ */
+public static void readFromFile() throws IOException 
+{		
+	  File file=new File("/home/admin1/Desktop/aa");     
+      FileReader fr=new FileReader(file);   
+      BufferedReader br = new BufferedReader(fr);
+      
+      String line = "";
+   try {
+	   while((line = br.readLine()) != null)
+	      {
+	    	  String[] string = line.split(",");                   //reading each element separated by ","
+	    	  System.out.println(Arrays.toString(string));
+	    	  System.out.println("Enter the string to be searched :"); 
+	    		String key = Utility.stringScanner();
+	    		Utility.stringBinarySearch(string, key, string.length);
+	      }
+	   
+	
+       } catch (Exception e) 
+         {
+            System.out.println(e.getStackTrace());
+	        // TODO: handle exception
+         }
+      
+
+}
+
+
+/**
+ * Merge Sort is a Divide and Conquer algorithm. 
+ * It divides input array in two halves, calls itself for the two halves and then merges the two sorted halves. 
+ * Merge is a method to merge and sort the given Array
+ * @param array
+ * @param low
+ * @param mid
+ * @param end
+ */
+public static void merge(int array[], int low, int mid, int end)  
+{  
+
+     int sublength1 = mid - low + 1;                   //divide the array to two subarray
+     int sublength2= end - mid;                        //subarray1 and subarray2
+
+     int subArray1[] = new int [sublength1];  
+     int subArray2[] = new int [sublength2];  
+
+     for (int i=0; i<sublength1; ++i)  
+     subArray1[i] = array[low + i];                    //put the elements in subarray from position zero to middle 
+
+     for (int j=0; j<sublength2; ++j)  
+     subArray2[j] = array[mid + 1+ j];                 //put the elements in subarray2 from postion mid+1 to end 
+
+
+     int i = 0, j = 0;  
+     int k = low; 
+     /* Copy remaining elements of  if any */
+    while (i<sublength1&&j<sublength2)  
+    {  
+		if (subArray1[i] <= subArray2[j])              //comparing the elements of subArrays  
+		{  
+		  array[k] = subArray1[i];                     //storing it into the Main Array
+		  i++;  
+		}  
+		else  
+		{  
+		 array[k] = subArray2[j];  
+		 j++;  
+		}  
+		 k++;                                          //low increased due to insertion of elements in main array
+	}  
+    /* 
+     * Copy remaining elements of  if any  
+     */
+	while (i<sublength1)  
+	{  
+		array[k] = subArray1[i];  
+		i++;  
+		k++;  
+	}  
+		  
+	while (j<sublength2)  
+	{  
+		array[k] = subArray2[j];  
+		j++;  
+		k++;  
+	}  
+}  
+
+/**
+ * 
+ * @param arr
+ * @param low
+ * @param end
+ */
+   public static void  mergeSort(int arr[], int low, int end)  
+   {  
+      if (low<end)  
+      {  
+        int mid = (low+end)/2;                      //find the middle position 
+        mergeSort(arr, low, mid);                   //make middle to end for subArray1     
+        mergeSort(arr , mid+1, end);                //make mid+1 to low for subArray2  
+        merge(arr, low, mid, end);   
+      }  
+   }
+   
+   /**
+    * toDecimal is a method to convert Binary to Decimal
+    * @param number
+    */
+   public static void toDecimal(int number) 
+   {
+		
+	    int []array = new int [8];
+	    String string =" ";
+		String string2 = "";
+		String res = " ";	
+	    while(number>0)
+	    {
+		 for (int j = 0; j < array.length; j++)            //steps to calculate per digit in a number   
+		 {
+			array[j] = number%2;
+			string = string + array[j];                    //copying the digits in string
+		    number = number/2;
+		 }
+   	    }
+	   
+		
+	    for (int i = string.length()-1; i >= 0; i--)       //reverse loop 
+	    {
+	//	 System.out.println(array[i]);
+		 string2 = string2 + string.charAt(i);             //copy the elements
+		
+	    }
+	    System.out.println("The Binary Conversion is :");
+	    System.out.println(string2);
+	
+	    String k = string2.substring(0,4);
+	
+	    String k2 = string2.substring(4,8);
+
+	   
+        res = k2.concat(k);                                 //concate the two strings 
+        System.out.println(res);
+      
+        int decimal=Integer.parseInt(res,2);  
+        System.out.println(decimal);  
+      
+	   
+   }
+   
+   /**
+    * Method to find decimal to Binary
+    * @param num
+    */
+   public static void toBinary(int num) 
+   {
+		
+	    int []array = new int [8];
+	 
+		while(num>0)                                  //toBinary method 
+	    for (int j = 0; j < array.length; j++) 
+	    {	
+			array[j] = num%2;                        //this find the digits 
+			num = num/2;
+		}
+   	    for(int i = array.length-1; i >= 0; i--) 
+	    System.out.println(array[i]);                //print the elements
+	   
+   }
+  
+   
+   /**
+	 * Method to find The Guessing Number between the Range
+	 * @param low
+	 * @param n
+	 */
+	public static void findYourNUmber(int low,int n) { 
+		int mid = (low +n)/2;
+	    System.out.println("IS your number less than :" +mid);
+	    System.out.println("Enter 1 for Yes and 0 for No :");
+	  
+         Scanner scan  = new Scanner(System.in);
+         //boolean ch = scan.hasNext();
+         int ch =Utility.integerScanner();
+         if(low == n)
+         {
+       	System.out.println("Your NUmber is :" + low);  
+       	return;
+         }
+       	 
+			if(ch ==1)
+			{
+			// n = mid;
+				findYourNUmber(low,mid);
+				
+			}
+			else
+			{
+				//low = mid +1;
+				findYourNUmber(mid+1,n); 
+			}
+			}
+   
+   
+   
+	
+
+
+
+public static int[] Primes()
+{
+int n=1000;
+int[] primeNumbers=new int[n];
+int j=0;
+for(int i =2;i<n;i++)
+{
+int num = i;
+       boolean flag = false;
+           if(num % 2 == 0)
+           {
+               flag = true;
+               
+           }
+       
+       if (!flag)
+       { primeNumbers[j]=num;  j++;}
+}
+return primeNumbers;
+}
+}

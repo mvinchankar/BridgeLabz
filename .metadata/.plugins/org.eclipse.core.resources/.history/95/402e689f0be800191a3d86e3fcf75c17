@@ -1,0 +1,119 @@
+package com.bridgelabz.datastructures;
+
+import com.bridgelabz.algorithmprograms.Utility;
+
+class Node
+{
+	int data;
+	Node next;
+}
+
+public class tp {
+
+	Node head =null;
+	//
+	public void addelement(int data)
+	{
+		Node newnode = new Node();
+		newnode.data = data;  //adding node
+		newnode.next = null;
+		
+		if(head == null)
+		{
+		 head= newnode;
+		// System.out.println(head.data);
+		}
+		else
+		{
+			Node TraversingNode = head;
+			while(TraversingNode.next != null)
+			{
+				TraversingNode = TraversingNode.next;
+			}
+			TraversingNode.next = newnode;
+	
+		}
+	}
+	public void search(int key)
+	{
+	   Node node = head;
+	   int flag =0,i =0,index;
+	   while (node.next !=null) 
+	   {
+		if(node.data == key)
+		{
+			flag =1;
+			index =i;
+			System.out.println("Found at" + index);
+			
+		}
+		node = node.next;
+		i++;
+	}
+	 while(node.next == null)
+	 {
+		 if(node.data == key)
+			{
+				
+				System.out.println("Found at last");
+				break;
+			}
+		 else
+		 {
+			 System.out.println("Not Found");
+		 }
+	 }
+	}
+	public void remove(int key)
+	{
+		Node temp = head;
+		Node previous = null;
+		if(key == 0)
+		{
+			head =temp.next;
+		}
+		if(temp.next != null)
+		{
+			 for (int i = 0; i < key; i++) 
+		      {
+				previous = temp;
+				temp = temp.next;
+		           
+		  }
+		      previous.next = temp.next;
+		}
+		System.out.println(temp.data);
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	public void print()
+	{
+		Node node = head;
+		while(node !=null)
+		{
+			System.out.println(node.data);
+			node = node.next;
+		}
+		
+	}
+	public static void main(String[] args) {
+	 tp t =new tp();
+	
+	// int data =Utility.integerScanner();
+	 t.addelement(12);
+	 t.addelement(23);
+	 t.addelement(32);
+	 t.print();
+	 t.search(32);
+	 t.remove(2);
+
+	}
+
+}

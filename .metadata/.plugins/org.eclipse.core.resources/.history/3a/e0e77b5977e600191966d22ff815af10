@@ -1,0 +1,26 @@
+package com.bridgelabz.functional;
+public class Stopwatch { 
+
+   public static void main(String[] args) {
+
+	   do {
+	//   int starttime = (int) System.nanoTime();
+	  // String k = Utility.stringScanner();
+	 //  int endtime  = (int)System.nanoTime();
+	//   int elapsedtime = endtime - starttime;
+	   
+	   int ch = Utility.integerScanner();
+	   switch(ch)
+	   {
+		   case 1 : 
+			   int starttime = (int) System.nanoTime();
+			   String k = Utility.stringScanner();
+			   
+		   case 2 : 
+			   int endtime  = (int)System.nanoTime();
+			   
+		   case 3:
+			   int elapsedtime = endtime - starttime;
+	   }
+}
+}

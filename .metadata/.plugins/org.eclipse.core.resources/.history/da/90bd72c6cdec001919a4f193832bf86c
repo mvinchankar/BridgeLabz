@@ -1,0 +1,60 @@
+package com.bridgelabz.datastructures;
+
+import com.bridgelabz.algorithmprograms.Utility;
+
+public class Ccc {
+
+	static String[][] getMonthCalender(int month, int year){
+		 
+		String []days = {"\t Sun","\t Mon","\tTue", "\t Wed","\tThu", "\t Fri", "\tSat"};
+		int day = Utility.daysOfWeek(1, month, year);
+		int Month[] ={ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+		String MonthString[]={"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
+		if(com.bridgelabz.functional.Utility.leapYear(year)){
+			 Month[1]=29;
+		}
+		int weeks= (int)((Month[month-1]+day)/7)+1;
+		String calender[][]= new String[weeks][days.length];
+		int date=1;
+		int i=0;
+		System.out.println("\t-----------------------------------------------------");
+		System.out.println("\t\t\t "+MonthString[month-1]+"\t "+year);
+		System.out.println("\t-----------------------------------------------------");
+		
+		for(int a=0; a<days.length; a++){
+			 System.out.print(" "+days[a]);	
+		}
+		System.out.println();	
+		System.out.println("\t-----------------------------------------------------");
+		
+		while(i<day){
+			 calender[0][i]="\t";
+			 i++;	
+		}
+		
+		i=day;
+		
+		for(int j=0; j<weeks; j++){
+			for(; i<days.length; i++){
+				if(date<=Month[month-1]) {
+					 calender[j][i]="\t"+date;
+					 date++;
+				 }
+				 else{
+					 calender[j][i]="\t";
+				 }
+			 }
+			 i=0;
+		}
+		return calender;
+	 
+	}
+	
+	
+	
+	public static void main(String[] args) {
+		int month = Utility.integerScanner();
+
+	}
+
+}

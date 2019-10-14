@@ -1,0 +1,148 @@
+package com.bridgelabz.datastructures;
+
+public class GenericUtility<T> {
+
+	class Node<T>
+	{
+		T data;
+		Node next;
+	}
+	Node head;
+	public void addelement(T data)
+	{
+		Node<T> newnode = new Node();
+		newnode.data = data;  //adding node
+		newnode.next = null;
+		
+		if(head == null)
+		{
+		 head= newnode;
+		// System.out.println(head.data);
+		}
+		else
+		{
+			Node TraversingNode = head;
+			while(TraversingNode.next != null)
+			{
+				TraversingNode = TraversingNode.next;
+			}
+			TraversingNode.next = newnode;
+	
+		}
+	}
+	public void search(T key)
+	{
+	   Node<T> node = head;
+	   int flag =0,i =0,index;
+	   while (node.next !=null) 
+	   {
+		if(node.data==(key))
+		{
+			flag =1;
+			index =i;
+			System.out.println("Found at" + index);
+			
+		}
+		node = node.next;
+		i++;
+	}
+	 while(node.next == null)
+	 {
+		 if(node.data==(key))
+			{
+				
+				System.out.println("Found at last");
+				break;
+			}
+		 else
+		 {
+			 System.out.println("Not Found");
+		 }
+	 }
+	}
+	public void remove(int key)
+	{
+		Node temp = head;
+		Node previous = null;
+		if(temp.data.equals(key))
+		{
+			head =temp.next;
+			System.out.println("Found and deleted :" + key);
+			return;
+			
+		}
+		//Remove last
+		
+		/* while(temp.next != null)
+		 {
+			 if(temp.next == last)
+			 {
+				 temp.next = null;
+				 return;
+			 }
+			 temp = temp.next;
+		 }*/
+		
+		for (int i=0; temp!=null && i<key-1; i++) 
+            temp = temp.next; 
+		
+			 if (temp == null || temp.next == null) 
+		     return; 
+			 
+			 Node next = temp.next.next; 
+			 temp.next = next;
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	public void print()
+	{
+		Node node = head;
+		while(node !=null)
+		{
+			System.out.println(node.data);
+			node = node.next;
+		}
+		/* while(fileinput.hasNextInt())
+		 {
+			 util.addelement(fileinput.nextInt());
+		 }*/
+	
+	
+	
+    }
+	
+	 public void sortList() {  
+	        //Node current will point to head  
+	        Node current = head, index = null;  
+	        String temp;
+	          
+	        if(head == null) {  
+	            return;  
+	        }  
+	        else {  
+	            while(current != null) {  
+	                //node index point to current.next  
+	                index = current.next;  
+	                  
+	                while(index != null) {  
+	                    //If current node data is greater than index node data, swap the data between them  
+	                    if((current.data.toString()).compareTo(index.data.toString())>0) {  
+	                        temp = current.data.toString();  //swap the data
+	                        current.data = index.data;  
+	                        index.data = temp;  
+	                    }  
+	                    index = index.next;  
+	                }  
+	                current = current.next;  
+	            }      
+	        }  
+	    }  
+	
+}

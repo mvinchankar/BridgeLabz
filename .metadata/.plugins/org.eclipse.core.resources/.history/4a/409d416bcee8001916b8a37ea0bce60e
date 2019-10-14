@@ -1,0 +1,23 @@
+package com.bridgelabz.datastructures;
+
+import com.bridgelabz.algorithmprograms.Utility;
+
+public class BankingCashCounter<T> {
+
+	public static void main(String[] args) {
+		BankingCashCounter<String> list= new BankingCashCounter<String>();
+		QueueUtility<String> list1 = new QueueUtility<String>();
+        System.out.println("Enter the Total Amount in Bank :");
+        int amount = Utility.integerScanner();
+		int withdraw,deposit;
+		System.out.println("Enter the number of people :");
+		int number_people = Utility.integerScanner();
+		for (int i = 1; i <= number_people; i++) {
+			System.out.println("Enter the Name :"+i);
+			String name =Utility.stringScanner();
+			list1.add(name);
+		}
+		list1.display();
+	}
+
+}

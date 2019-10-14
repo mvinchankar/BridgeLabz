@@ -1,0 +1,12 @@
+package com.bridgelabz.functional;
+
+public class TicTacToe {
+
+	public enum Cell{E,X,O};
+	private Cell[][] board ;
+	public static void main(String[] args) {
+		board = new Cell[3][3];
+
+	}
+
+}

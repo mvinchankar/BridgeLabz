@@ -1,0 +1,35 @@
+package com.bridgelabz.algorithmprograms;
+
+public class FindyourNumber {
+
+	
+	
+	public static void main(String[] args) {
+		
+        int low = 0;
+		System.out.println("Enter the range :");
+		int n = Utility.integerScanner();
+		int number = (int)Math.pow(2, n);
+		System.out.println(number);
+		int d = Utility.integerScanner();
+		int mid =(low+number)/2;
+
+		while(true) {
+			System.out.println("IS your number less than :" +mid);
+			int flag = Utility.integerScanner();
+		
+			if(flag==0) 
+			{
+			d = mid;
+			mid = (d+number)/2;
+			}
+			else
+			{
+				number = mid;
+				mid = (number +d)/2;
+			}
+			
+		}
+	}
+
+}

@@ -1,0 +1,37 @@
+package com.bridgelabz.algorithmprograms;
+
+public class SortingAlgo {
+	public static void stringBinarySearch(String arr[],String x) {
+		int min = 0;
+		int max = arr.length -1;
+		int mid;
+		
+		while (min <= max) {
+			mid = (min + max) / 2;
+			if (arr[mid].compareTo(x) < 0) 
+			{ min = mid + 1; } 
+			else if (arr[mid].compareTo(x) > 0) {
+				max = mid - 1;
+			} 
+			else {
+				System.out.println("String found at :"+mid);
+			}
+		}
+		System.out.println("Not  Present");
+	}
+
+	public static void main(String[] args) {
+		System.out.println("Enter the Number of elements :");
+		 int num = Utility.integerScanner();
+		 String[] arr = new String [num]; 
+		 for (int i = 0; i <= arr.length; i++) {
+				Utility.stringScanner();
+			}
+		 System.out.println("Enter the string you want to search : ");
+	        String x = Utility.stringScanner();
+	        SortingAlgo a =new SortingAlgo();
+	        a.stringBinarySearch(arr[],x);
+
+	}
+
+}

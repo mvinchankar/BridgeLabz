@@ -1,0 +1,17 @@
+package com.bridgelabz.functional;
+
+public class Distance {
+
+	
+	
+	
+	/**
+	 * Driver method to calculate Euclidean Distance
+	 */
+	public static void main(String[] args) {
+		
+		System.out.println("To find the Euclidean Distance between (X,Y) and the Origin :");
+        Utility.calculateEuclideanDistance();
+	}
+
+}

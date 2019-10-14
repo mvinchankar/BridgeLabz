@@ -1,0 +1,33 @@
+package com.bridgelabz.algorithmprograms;
+
+import java.util.Scanner;
+
+public class Utility {
+	static Scanner scanner = new Scanner(System.in);
+	public static int integerScanner() 
+	{
+		
+		int inputInteger = scanner.nextInt();
+		return inputInteger;
+		
+	}
+    public static double doubleScanner()
+    {
+    	double inputdouble = scanner.nextDouble();
+    	return inputdouble;
+    }
+
+    public static String stringScanner() {
+	
+    	String inputString = scanner.nextLine();
+    	return inputString;
+	
+	
+}
+    
+    public static float floatScanner()
+    {
+    	Float inputfloat =scanner.nextFloat();
+    	return inputfloat;
+    }
+}

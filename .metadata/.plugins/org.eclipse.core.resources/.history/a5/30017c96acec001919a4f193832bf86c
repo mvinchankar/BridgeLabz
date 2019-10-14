@@ -1,0 +1,28 @@
+package com.bridgelabz.algorithmprograms;
+
+import java.util.Scanner;
+
+public class FindyourNumber {
+
+	
+			//findYourNUmber(mid, n, low);
+
+	
+	
+	
+	public static void main(String[] args) {
+		
+        int low = 0;
+		System.out.println("Enter the range :");
+		int n = Integer.parseInt(args[0]);
+		//int number = (int)Math.pow(2, n);
+		//int mid =(low+n)/2;
+		//System.out.println("guess your number btween 0 to"+n);
+		//int flagd = Utility.integerScanner();
+		FindyourNumber f = new FindyourNumber();
+		Utility.findYourNUmber(low,n);
+		
+		
+	}
+
+}

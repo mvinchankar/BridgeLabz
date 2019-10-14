@@ -1,0 +1,20 @@
+package com.bridgelabz.datastructures;
+
+import com.bridgelabz.algorithmprograms.Utility;
+
+public class PalindromeChecker<T> {
+
+	public static void main(String[] args) {
+		PalindromeChecker<String> p = new PalindromeChecker<String>();
+		DequeueUtility<String>d = new DequeueUtility<String>();	
+				String string = Utility.stringScanner();
+				char[] array = string.toCharArray();
+				for (Character c : array)
+				{
+					d.insertLast(c.toString());
+				}
+				d.displayForward();
+		
+	}
+
+}

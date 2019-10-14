@@ -1,0 +1,7 @@
+package com.bridgelabz.inventory.model;
+
+import org.codehaus.jackson.map.ObjectMapper;
+
+public class Utility {
+ private static ObjectMapper mapper;
+}

@@ -1,0 +1,75 @@
+package com.bridgelabz.datastructures;
+
+public class SinglyLinkedList {
+    private Node head;  // Head is the first node in linked list
+
+    public boolean isEmpty(){
+        return length() == 0;
+    }
+ 
+    public void append(T data){
+        if(head == null){
+            head = new Node(data);
+            return;
+        }
+        tail().next = new Node(data);
+    }
+ 
+    private Node tail() {
+        Node tail = head;
+     
+        // Find last element of linked list known as tail
+        while(tail.next != null){
+            tail = tail.next;
+        }      
+        return tail;
+     
+    }
+ 
+
+ 
+    @Override
+    public String toString(){
+        StringBuilder sb = new StringBuilder();
+        Node current = head;
+        while(current != null){
+           sb.append(current).append("--&gt;");
+           current = current.next;
+        }    
+        if(sb.length() &amp;gt;=3){
+            sb.delete(sb.length() - 3, sb.length());
+            // to remove --&gt; from last node
+        }
+     
+        return sb.toString();
+    }
+
+    public int length() {
+       int length = 0;
+       Node current = head;  // Starts counting from head - first node
+       while(current != null){
+           length ++;
+           current = current.next;
+       }
+       return length;
+    }
+
+ 
+    // Node is nested static class because it only exists
+    // along with linked list
+    // Node is private because it's implementation detail, 
+    // and should not be exposed
+    private static class Node {
+        private Node next;
+        private T data;
+
+        public Node(T data) {
+            this.data = data;
+        }
+
+        @Override
+        public String toString() {
+            return data.toString();
+        }
+    }
+}

@@ -1,0 +1,49 @@
+package com.bridgelabz.algorithmprograms;
+import java.util.*;
+public class adas {
+
+	public static void main(String[] args) {
+		    Scanner scan = new Scanner (System.in);
+		    System.out.println("Think of a number between 1 and 100\n");
+		    int lowRange = 1;
+			int highRange = 100;
+			int possibleGuesses = highRange + lowRange - 1;
+			int guess; 
+			int player; 
+			int numTurns = 1; 
+		    int maxTurns;
+			do{
+				possibleGuesses = highRange + lowRange - 1;
+				guess = (possibleGuesses / 2);
+				
+				System.out.println("Is your number %d ? \n" + guess);
+				System.out.println("(1) yes, you guessed my number \n");
+				System.out.println("(2) No, guess a lower number \n");
+				System.out.println("(3) No, guess a higher number \n");
+				player = scan.nextInt();// Get the players feed back
+				
+				
+				if(player == 3)
+				  lowRange = guess + 1;
+				else if(player == 2)
+				  highRange = guess - 1; //update the new high range
+				else if(player == 1)
+				  break; //break out of the loop, because we guessed the players number
+				
+				numTurns++; //Increment the number of turns
+				
+			}while(player != 1 && numTurns <= maxTurns);
+			
+			//Print the results
+			if(numTurns > maxTurns)
+			   System.out.println("You made a mistake, you've exceeded the maximum number of turns \n");
+			else
+			   System.out.println("I guessed your number in %d turns! \n" + numTurns);
+			
+		   
+		 }
+		
+
+	
+
+}

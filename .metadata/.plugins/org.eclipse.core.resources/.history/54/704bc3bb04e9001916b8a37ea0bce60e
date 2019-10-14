@@ -1,0 +1,14 @@
+package com.bridgelabz.datastructures;
+
+public class HashingFunction {
+
+	public static void main(String[] args) {
+		HashUtility h =new HashUtility();
+		h.insert(10);
+		h.insert(2);
+		h.insert(77);
+		h.printHashTable();
+
+	}
+
+}

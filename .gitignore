@@ -27,7 +27,7 @@ someOtherfoler/
 *.tar
 *.zip
 .settings/
-
+*.metadata
 *.suo
 *.user
 _ReSharper.*
@@ -36,4 +36,4 @@ obj
 packages
 .project
 .classpath
-
+*.metadata

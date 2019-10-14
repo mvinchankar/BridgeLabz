@@ -1,0 +1,137 @@
+package com.bridgelabz.datastructures;
+
+import java.util.List;
+
+import com.bridgelabz.algorithmprograms.Utility;
+
+public class LinkedLists<T> {
+
+	
+	public static class Node<T>
+	{
+		T data;
+		Node next;
+		
+	}
+	
+	Node head;
+	 public static void printList(LinkedLists list) 
+	    { 
+	        Node currentNode = list.head; 
+	   
+	        System.out.print("LinkedList: "); 
+	   
+	        // Traverse through the LinkedList 
+	        while (currentNode != null) { 
+	            // Print the data at current node 
+	            System.out.print(currentNode.data + " "); 
+	   
+	            // Go to next node 
+	            currentNode = currentNode.next; 
+	        } 
+	    } 
+	 public  void insert(T data) 
+	    { 
+	        // Create a new node with given data 
+	        Node newnode = new Node(); 
+	        newnode.data = data;
+	        newnode.next = null; 
+	  
+	        // If the Linked List is empty, 
+	        // then make the new node as head 
+	        if (head == null) { 
+	            head = newnode; 
+	        } 
+	        else { 
+	            // Else traverse till the last node 
+	            // and insert the new_node there    
+	            Node last = head; 
+	            while (last.next != null) { 
+	                last = last.next; 
+	            } 
+	  
+	            // Insert the new_node at last node  
+	            last.next = newnode; 
+	        } 
+	        
+	        
+	      
+	         
+	    }
+	public void deleteByKey(int key) 
+    { 
+	        // Store head node 
+	        Node temp = head, prev = null;  
+       	    temp.data = key;
+	      
+	        if (temp!=null && temp.data == key) 
+	        { 
+	            head = currentNode.next; // Changed head 
+	  
+	            // Display the message 
+	            System.out.println(key + " found and deleted"); 
+	  
+	            // Return the updated List 
+	            
+	        }
+    
+	  
+	      
+       while (currentNode != null && currentNode.data != key) { 
+            
+            prev = currentNode; 
+            currentNode = currentNode.next; 
+        } 
+  
+     
+        
+	if (currentNode != null) 
+	{
+        	
+         Node temp =head;
+          for (int i = 0; temp!=null &&i <key; i++) {
+			
+		}
+            /*prev.next = currentNode.next; 
+  
+            // Display the message 
+            System.out.println(key + " found and deleted");*/ 
+        } 
+  
+        if (currentNode == null) { 
+            // Display the message 
+            System.out.println(key + " not found"); 
+        } 
+  
+        
+       
+    } 
+ 
+ 
+	 
+	 public void display() {
+		 
+	 Node currentNode = head;
+     while (currentNode != null) { 
+         // Print the data at current node 
+         System.out.print(currentNode.data + " "); 
+
+         // Go to next node 
+         currentNode = currentNode.next; 
+     } 
+	 }
+	public static void main(String[] args) {
+		LinkedLists<Integer> f = new LinkedLists<Integer>();
+		System.out.println("How many elements you want to store in linkedlist : ");
+		int numberoftimes = Utility.integerScanner();
+		System.out.println("Enter the elements");
+		for (int i = 0; i < numberoftimes; i++) {
+			int num = Utility.integerScanner();
+			f.insert(num);
+		}
+		f.deleteByKey(0);
+		f.display();
+		//printList(f);
+		
+	}
+}

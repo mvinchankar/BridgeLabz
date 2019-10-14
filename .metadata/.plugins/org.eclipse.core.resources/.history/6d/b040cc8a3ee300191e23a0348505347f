@@ -1,0 +1,114 @@
+package com.bridgelabz.algorithmprograms;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Utility {
+	static Scanner scanner = new Scanner(System.in);
+	public static int integerScanner() 
+	{
+		
+		int inputInteger = scanner.nextInt();
+		return inputInteger;
+		
+	}
+    public static double doubleScanner()
+    {
+    	double inputdouble = scanner.nextDouble();
+    	return inputdouble;
+    }
+
+    public static String stringScanner() {
+	
+    	String inputString = scanner.nextLine();
+    	return inputString;
+	
+	
+}
+    
+    public static float floatScanner()
+    {
+    	Float inputfloat =scanner.nextFloat();
+    	return inputfloat;
+    }
+    
+    
+    public static void isAnagram()
+	 {
+		 boolean flag = false;
+		 System.out.println("Enter the First String :");
+		 String s1 = Utility.stringScanner();
+		 System.out.println("Enter the Second String :");
+		 String s2 = Utility.stringScanner();
+		 
+		char[] c1 = s1.toCharArray();
+		char[] c2 = s2.toCharArray();
+		
+		if(c1.length == c2.length)
+		{
+			Arrays.sort(c1);
+			Arrays.sort(c2);
+		}
+		String s3 = new String(c1);
+		String s4 = new String(c2);
+		if(s3.equals(s4))
+		{
+			System.out.println("Strings are Anagrams .");
+		}
+		else
+		{
+		System.out.println("Strings are not Anagrams");
+	 
+		}
+	}
+    public static void isPrime(int num,int cn) {
+		int count = 0;
+	    String [] a=new String [1000];
+		
+		for (int i = 2; i<=num; i++) 
+		{
+			cn=i;
+			count = 0;
+			for (int j = 2; j <= cn/2; j++) 
+			{
+			    if (cn % j == 0) 
+			    {
+			      a[count] =String.valueOf(cn);
+			      count++;
+	              //break;
+			    }
+		    }
+		
+           if(count == 0) 
+		   {
+        	  System.out.print(" "+ cn); 
+	}
+		}
+	}
+	public static void isPalindrome(int num,int rem,int cn) {
+		//isPrime(num,cn);
+		int count = 0;
+		  if(count == 0) 
+		   {
+			  isPrime(num,cn);
+       	  //System.out.print(" "+ cn); 
+           	   //System.out.println(" "+ cn);
+           	   //prime.add(cn);
+   		  int temp = cn;
+   		    int sum = 0;
+   			   while(cn>0) 
+   			   {
+   				   
+   		    	rem = cn%10;
+   		    	sum = (sum*10) + rem;
+   		    	cn = cn/10;
+   		       }
+   		       if(temp == sum)
+   		       {
+   		        System.out.println("  "+temp);	
+
+   		       }
+	}
+	}
+
+}

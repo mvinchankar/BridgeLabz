@@ -1,0 +1,27 @@
+package com.bridgelabz.datastructures;
+
+
+
+
+public class fun<T> {
+
+	linkedaa<T> head;
+	static class Node{
+		int data;
+		Node next;
+		Node(int d){data =d;next =null;}
+	}
+	public void display()
+	{
+		linkedaa<T> n = head;
+		while(n != null)
+		{
+			System.out.println(n.data + "\n");
+			n=n.next;
+		}
+	}
+	public static void main(String[] args) {
+		fun<Integer> list = new fun<Integer>();
+		
+	}
+}

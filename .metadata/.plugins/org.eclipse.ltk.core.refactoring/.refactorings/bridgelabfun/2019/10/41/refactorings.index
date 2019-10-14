@@ -1,0 +1,19 @@
+1570354516675	Infer generic type arguments
+1570426764288	Delete element
+1570426813017	Delete element
+1570426844327	Delete element
+1570429155444	Rename type variable 'V'
+1570430488321	Rename field 'head'
+1570430513720	Rename field 'tail'
+1570441348249	Rename field 'head'
+1570441363143	Rename field 'tail'
+1570441897987	Delete element
+1570455228186	Rename type 'SLLNode'
+1570455307410	Rename local variable 'nptr'
+1570455977311	Delete element
+1570455985735	Delete element
+1570619199014	Extract local variable 'scanner'
+1570619214527	Convert local variable 'scanner' to field
+1570706272544	Rename local variable 'a1'
+1570706299106	Rename local variable 'a2'
+1570871248964	Rename type 'Utility'

@@ -1,0 +1,20 @@
+package com.bridgelabz.algorithmprograms;
+
+public class BinarySearch 
+{
+	public static void main(String[] args) 
+	{
+		 System.out.println("Enter the Number of elements :");
+		 int num = Utility.integerScanner();
+		 String[] arr = new String [num]; 
+		 for (int i = 0; i <= arr.length; i++) {
+				Utility.stringScanner();
+			}
+		 System.out.println("Enter the string you want to search : ");
+	        String x = Utility.stringScanner();
+	       // int startTime1 =(int) System.nanoTime();
+	        Utility.stringBinarySearch(arr, x,num); 
+		
+	}
+
+}

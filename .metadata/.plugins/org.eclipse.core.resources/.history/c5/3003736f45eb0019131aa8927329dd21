@@ -1,0 +1,24 @@
+package com.bridgelabz.algorithmprograms;
+
+public class AnagramandPalindrome {
+
+	
+	public static void main(String[] args) {
+		
+	   System.out.println("Series of number :");
+       int number = Utility.integerScanner();
+       int [] array = Utility.printAnagram(number);
+       System.out.println("Prime numbers are :");
+       Utility.isPrime(number);
+       
+       System.out.println("Palindrome in Prime Numbers are :");
+       
+	   Utility.isPalindrome(number);
+	   System.out.println("Anagrams are :");
+	  for (int i = 0; i < array.length; i++) {
+		System.out.println(array[i]);
+	}
+	  
+	}
+}
+	

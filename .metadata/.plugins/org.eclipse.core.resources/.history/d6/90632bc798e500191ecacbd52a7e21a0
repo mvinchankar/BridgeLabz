@@ -1,0 +1,29 @@
+package com.bridgelabz.algorithmprograms;
+import java.util.*;
+public class adas {
+
+	public static void main(String[] args) {
+		    Scanner scan = new Scanner (System.in);
+		    System.out.println("Think of a number between 1 and 10\n");
+
+		    double max = 10;
+		    double x = max/2;
+
+		    while (true){
+		        System.out.println("Is your number less than or equal to "+(int)x+" ?");
+		        String truth = scan.next();
+
+		        if(truth.equals("true")){
+		            x=x/2;
+		        }
+		        if(truth.equals("false")){
+		            x+=x/2;
+		        }
+		        System.out.println("Your number is :" +(int) x);
+		    }
+		 }
+		
+
+	
+
+}

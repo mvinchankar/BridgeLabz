@@ -1,0 +1,21 @@
+package com.bridgelabz.functional;
+public class Stopwatch { 
+/**
+ * Driver method to built a stopwatch
+ * @param args
+ */
+   public static void main(String[] args) {
+      
+	     
+	 
+	  
+			   int  starttime = (int) System.currentTimeMillis();
+			   System.out.println("Enter a key");
+			   String k = Utility.stringScanner();
+			   int endtime  = (int)System.currentTimeMillis();			
+			  
+			  int  elapsedtime = endtime - starttime;
+			    System.out.println(elapsedtime/1000);
+	
+  }
+}

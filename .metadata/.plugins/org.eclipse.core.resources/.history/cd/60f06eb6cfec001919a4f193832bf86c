@@ -1,0 +1,19 @@
+package com.bridgelabz.functional;
+import java.util.Scanner;
+public class Quadraticexpression {
+/**
+ * Driver method to find the quadratic equation 
+ * @param args
+ */
+	public static void main(String[] args) {
+		double a, b, c;
+		System.out.println("Enter the values of a, b, c respectively :");
+		a = Utility.doubleScanner();
+		b = Utility.doubleScanner();
+        c = Utility.doubleScanner();
+
+        double root1 = 0, root2 = 0;
+        Utility.rootsofEquation(a, b, c, root1, root2);
+	}
+        
+}

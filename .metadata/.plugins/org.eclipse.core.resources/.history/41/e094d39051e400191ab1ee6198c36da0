@@ -1,0 +1,47 @@
+package com.bridgelabz.algorithmprograms;
+
+import java.util.Scanner;
+
+public class FindyourNumber {
+
+	public static void findYourNUmber(int mid,int n,int low) {
+          String uservalue = null;
+			if((mid) ==1)
+			{
+				
+				System.out.println("  Found  " + mid);
+			}	
+			else
+			{
+				mid = low +(n-low)/2;
+			    System.out.println("IS your number less than :" +mid);
+			    System.out.println("Enter 0 for NO and 1 for Yes :");
+			    
+			if(uservalue.equals("Yes press 1"))
+			{
+				findYourNUmber(mid, n, low);
+			}
+			else
+			{
+				findYourNUmber(mid, n, low);
+			}
+			}
+		}
+	
+	
+	public static void main(String[] args) {
+		
+        int low = 0;
+		System.out.println("Enter the range :");
+		int n = Utility.integerScanner();
+		//int number = (int)Math.pow(2, n);
+		int mid =(low+n)/2;
+		System.out.println("guess your number btween 0 to"+n);
+		//int flagd = Utility.integerScanner();
+		FindyourNumber f = new FindyourNumber();
+		findYourNUmber(mid, n, low);
+		
+		
+	}
+
+}

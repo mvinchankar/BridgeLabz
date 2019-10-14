@@ -1,0 +1,62 @@
+package com.bridgelabz.datastructures;
+
+public class QueueUtility {
+	 private class Node<T> {
+		T data;
+		Node next;
+		public Node(T v) {
+			this.v  = v;
+		}
+	}
+	
+	private int size;
+	private Node<V> head;
+	private Node<V> tail;
+	
+	public MyQueue() {
+		size = 0;
+		head = null;
+		tail = null;
+	}
+	
+	public int size() {
+		return size;
+	}
+	
+	public boolean isEmpty() {
+		return size == 0;
+	}
+	
+	
+	public void add(V v) {
+		if (head == null) {
+			head = new Node(v);
+			tail = head;
+		} else {
+			tail.next = new Node(v);
+			tail = tail.next;
+		}
+		
+		size++;
+	}
+	
+	public V remove() {
+		if (size == 0) return null;
+		
+		V v = head.v;
+		head = head.next;
+		size--;
+		
+		return v;
+	}
+	
+	
+	public V peek() {
+		if (size == 0) return null;
+		
+		V v = head.v;
+		
+		return v;
+	}
+	
+}

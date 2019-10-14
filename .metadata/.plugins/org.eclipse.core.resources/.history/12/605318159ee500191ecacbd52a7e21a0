@@ -1,0 +1,35 @@
+package com.bridgelabz.algorithmprograms;
+import java.util.*;
+public class adas {
+
+	public static void main(String[] args) {
+		    Scanner scan = new Scanner (System.in);
+		    System.out.println("Think of a number between 1 and 20\n");
+
+		    int lower = 1;
+		    int upper = 10;
+		    int guess = (lower + upper) / 2; 
+		    while (true){
+		    	System.out.println("Is your number equals to or less than " + guess +"?" );
+		    	String truth = scan.next();
+		    	if((upper -lower) ==1){
+		    	    break;
+		    	}
+                if(truth.equals("t")){
+		    	    if(guess == guess/2)
+		    	    guess=guess/2;
+		    	}
+		    	if(truth.equals("f")){
+		    	    if(guess == (2*guess))
+		    	    upper = guess - 1;
+		    	    guess = (lower + upper) / 2;
+		    	}
+		    	 
+		    }
+		    System.out.println("Your number is :" +guess);
+		 }
+		
+
+	
+
+}

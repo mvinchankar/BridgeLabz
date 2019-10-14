@@ -1,0 +1,37 @@
+package com.bridgelabz.algorithmprograms;
+import java.util.Arrays;
+public class AnagramofStrings {
+
+	
+	public static void main(String[] args) {
+		System.out.println("Enter the first String :");
+	    String str1 = Utility.stringScanner();
+	    System.out.println("Enter the Second String :");
+	    String str2 = Utility.stringScanner();
+        Utility.isAnagram(str1,str2);
+	}
+
+}
+public static int [] isPrime(int range) {
+	int count = 0;
+    String [] array=new String [1000];
+    int[] prime = new int [range];
+    
+    for (int i = 2; i < range; i++) 
+	   {
+		  
+		  for (int j = 2; j <= i / 2; j++) 
+		  {
+		    if (i % j == 0) 
+		    {
+		    count++;
+		    }
+		  }
+
+		  if (count == 0) 
+		  {
+          prime[i] = i ;
+		  }
+	   }
+    return prime;
+}

@@ -1,0 +1,5 @@
+package com.bridgelabz.inventory.model;
+
+public class Utility {
+
+}

@@ -1,0 +1,67 @@
+
+package com.bridgelabz.datastructures;
+
+import java.util.Scanner;
+
+import com.bridgelabz.algorithmprograms.Utility;
+import com.bridgelabz.functional.FunctionalUtility;
+
+public class StackCalendarObjects {
+
+	public static void main(String[] args) throws Exception 
+	{
+		FunctionalUtility leap = new FunctionalUtility();
+		Utility day = new Utility();
+		StackUtility<String> weekDay = new StackUtility<String>();
+		StackUtility<Integer> weekDate = new StackUtility<Integer>();
+		Scanner sc = new Scanner(System.in);
+		weekDay.push("S");
+		weekDay.push("S");
+		weekDay.push("F");
+		weekDay.push("T");
+		weekDay.push("W");
+		weekDay.push("T");
+		weekDay.push("M");
+		System.out.println("please enter year");
+		int year = sc.nextInt();
+		System.out.println(""+"1.Jan\n"
+				+ "2.Feb\n"
+				+ "3.Mar\n"
+				+ "4.apr\n"
+				+ "5.may\n"
+				+ "6.jun\n"
+				+ "7.jul\n"
+				+ "8.aug\n"
+				+ "9.sept\n"
+				+ "10.oct\n"
+				+ "11.nov\n"
+				+ "12.dec");
+		int month = sc.nextInt();
+		String[] months= {"","January","Febuary","March","April","May","June","July","August"
+				,"September","October","November","December"};
+		
+		int[] days = {0,31,28,31,30,31,30,31,31,30,31,30,31};
+		
+		if(month==2 && leap.yearCalculation((year)));
+		{
+			days[month]=29;
+		}
+		System.out.println(month);
+		int d= day.DayOfWeek(1,month,2019);
+
+		
+		for(int i=days[month];i>0;i--)
+		{
+			weekDate.push(i);
+		}
+		for(int j=0;j<d;j++)
+		{
+			weekDate.push(0);
+		}
+		weekDay.showFullStack();
+		System.out.println();
+		weekDate.showFullStack();
+
+	}
+
+}

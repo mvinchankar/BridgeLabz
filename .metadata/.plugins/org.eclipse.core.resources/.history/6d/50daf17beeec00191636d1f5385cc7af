@@ -1,0 +1,3 @@
+module Inventory {
+	requires jackson.mapper.asl;
+}

@@ -1,0 +1,20 @@
+package com.bridgelabz.algorithmprograms;
+
+public class AnagramandPalindrome {
+
+	
+	public static void main(String[] args) {
+		
+	   System.out.println("Series of number :");
+       int num = Utility.integerScanner();
+       int rem = 0,cn = 0;
+	   Utility.isPalindrome(num);
+	   Utility.isPrime(num);
+	
+        	            	
+			  
+         
+
+	}
+
+}

@@ -1,0 +1,14 @@
+package com.bridgelabz.functional;
+
+import java.util.Scanner;
+
+public class Harmonicnumber {
+	
+	public static void main(String[] args) {
+		
+		System.out.println("Enter the number :");
+		float sum =Utility.floatScanner();
+		System.out.println(sum);
+	}
+
+}
