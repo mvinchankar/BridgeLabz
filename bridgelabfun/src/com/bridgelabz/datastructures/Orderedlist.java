@@ -1,0 +1,86 @@
+package com.bridgelabz.datastructures;
+    import java.io.File;
+	import java.io.FileNotFoundException;
+	import java.io.IOException;
+	import java.io.PrintWriter;
+	import java.io.Writer;
+	import java.util.Scanner;
+
+	import com.bridgelabz.algorithmprograms.Utility;
+
+public class Orderedlist
+{
+
+ public static void main(String[] args) throws IOException 
+ {
+	 int count =0,flag=1;
+	 GenericUtility<String> util = new GenericUtility<String>();
+     File file=new File("/home/admin1/Desktop/aa");     
+     Scanner fileinput;
+	 fileinput = new Scanner(file).useDelimiter(","); 
+     String line ="";
+     while(fileinput.hasNext())
+     {
+    	 /*
+    	  * read the file     
+    	  */
+	  line = fileinput.next(); 
+	  /*
+	   * add the element to linkedlist from file
+	   */
+	  util.addelement(line);                  
+	 }
+		  //   util.print();
+     /*
+      * sortlist method to sort the linked list
+      */
+     util.sortList();                         
+     util.print();
+     System.out.println("Enter the number to be searched :");
+     String userinput = Utility.stringScanner();
+     com.bridgelabz.datastructures.GenericUtility.Node traversingNode = util.head;
+     while((traversingNode) !=null) 
+ 	 {
+ 		 if(traversingNode.data.equals(userinput))
+ 		 {
+ 			 /*
+ 			  * if exists remove the element   
+ 			  */
+ 			 util.remove(count);                     
+ 			 flag =0;
+ 		 }
+ 		 traversingNode= traversingNode.next;
+ 		 count++;
+ 	 }
+ 	 
+ 	 if(flag==1)
+ 	 {
+ 		 /*
+ 		  * if not add the element in list
+ 		  */
+ 		 util.addelement(userinput);         
+ 	 }
+ 	 
+ 	 Writer writer = new PrintWriter("/home/admin1/Desktop/output");
+ 	 com.bridgelabz.datastructures.GenericUtility.Node traversingNode1 =util.head;
+ 	 while((traversingNode1.next)!=null && (traversingNode1.data) !=null)
+ 	 {
+ 		 writer.write(traversingNode1.data +"\n");
+ 		 traversingNode1 = traversingNode1.next;
+ 		 
+ 	 }
+ 	 /*
+ 	  * print the elements in a file        
+ 	  */
+ 	 writer.write(traversingNode1.data+"");   
+ 	 writer.close();
+	
+
+ 	 
+ 	
+  }      
+      
+}
+
+
+
