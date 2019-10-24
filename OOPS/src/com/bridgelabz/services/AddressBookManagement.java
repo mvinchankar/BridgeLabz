@@ -16,39 +16,65 @@ import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-
-public class AddressBookManagement 
+/**
+ *Class contains methods like create,delete,save and saveAs.
+ */
+public class AddressBookManagement implements AddressBookManagementInterface
 {
 	ObjectMapper mapper = new ObjectMapper();
 	File file;
-	String filePath = "/home/use/workspace/AddressBook/src/com/bridgelabz/repository/";
+	String filePath = "/home/use/workspace/BridgeLabz/OOPS/src/com/bridgelabz/repository/";
 	AddressUtility utility = new AddressUtility();
     Scanner scanner = new Scanner(System.in);	
 	static List<Person> arrayList=new ArrayList<Person>();
 	
+	/**
+	 * Method to Get the List of Person
+	 * @return
+	 */
 	public static List<Person> getList()
 	{
      return arrayList;		
 	}
 	
+	/**
+	 * Method To Create a New AddressBook
+	 * @throws IOException
+	 */
     public void createNewAddressBook() throws IOException 
     {
 		System.out.print("\n\t\t\t\tEnter the File Name : ");
 		String fileName = scanner.next();
 		file = new File(filePath + fileName + ".json");
+		/*
+		 * If file exists It will display message
+		 * or It will create file by that Name 
+		 */
 		if (file.exists()) {
 			System.out.println(
 					"\n\t\tThe name " + fileName + " is already used in this location. Please use a different name.");
-		} else {
+		} 
+		else {
 			file.createNewFile();
+			/*
+			 * It writes the File Name into the location
+			 */
 			mapper.writeValue(file,arrayList);
 			System.out.println("\n\t\t\t\tFile is Create Successfully...!");
 		}
 	}
 
+    /**
+     * Method to Open the AddressBook 
+     * @throws IOException
+     */
 	public  List<Person>  openAddressBook(String fileName) throws IOException {
 		file = new File(filePath + fileName+".json");
       //  System.out.println(file);
+		/*
+		 * If it exists Buffer Reader read the data from File and Display iton Console
+		 * or Else it is Empty
+		 */
 		if (file.exists()) {
 			
 			FileReader fr=new FileReader(file);
@@ -65,6 +91,9 @@ public class AddressBookManagement
 			}
 			
 			br.close();
+			/*
+			 * Class in which Multiple methods are present like add,delete,edit and Sort.
+			 */
 			AddressBook manageOperation = new AddressBook();
 
 			char input = ' ';
@@ -85,19 +114,31 @@ public class AddressBookManagement
                  
 				switch (choice) {
 				case 1:
+	                /*
+	                 * Method to add data in a File 
+	                 */
 					arrayList = manageOperation.add(arrayList);
 					break;
 
 				case 2:
+					/*
+					 * Method to edit data in a file 
+					 */
 					arrayList = manageOperation.edit(arrayList);
 					break;
 
 				case 3:
+					/*
+					 * Method to delete data from a file
+					 */
 					 arrayList = manageOperation.delete(arrayList);
 										
 					break;
 
 				case 4:
+					/*
+					 * Method to Sort the data from a file
+					 */
 					arrayList=manageOperation.sort(arrayList);
 					break;
 
@@ -115,12 +156,24 @@ public class AddressBookManagement
 		 
 	}
 
+    /**
+     * Method to save the changes made in AddressBook 
+     * @throws IOException
+     * @throws JsonMappingException
+     * @throws JsonMappingException
+     */
 	public void save(List<Person> arrayList) throws JsonGenerationException, JsonMappingException, IOException {
-		
+		/*
+		 * Mapper writes the data in a particular file from a class
+		 */
 		mapper.writeValue(new FileOutputStream(file), arrayList);
 
 	}
 
+	/**
+	 * Method to rename a particular file 
+	 * @throws IOException 
+	 */
 	public void saveAs() throws IOException {
 		System.out.println();
 		file = new File(filePath);
@@ -135,11 +188,17 @@ public class AddressBookManagement
 			System.out.println();
 		}
 		System.out.print("\n\t\tEnter the File Name Which You want to Save As :");
+		/*
+		 * Enter the file name to rename 
+		 */
 		String fname = Utility.stringScanner();
 		file =new File(filePath+fname+".json");
 			
 		for(File fileName : fileList)
 		{
+		 /*
+		  * If file name matches then Change the name of a file
+		  */
 	     if(file.getName().equals(fileName.getName()))
          {
 		  arrayList = utility.readJsonDataConvertIntoList(file);
@@ -150,16 +209,31 @@ public class AddressBookManagement
           String extension=Utility.stringScanner();
           
           file=new File(filePath+newFileName+extension);
+          /*
+           * Method to create a new file
+           */
           file.createNewFile();
-          
+          /*
+           * Mapper writes the data into file
+           */
           mapper.writeValue(new FileOutputStream(file), arrayList);
           System.out.println("File is Save As with new Name in the Directory"); 
        
          }
+	     else
+	     {
+	    	 System.out.println("Incorrect Details");
+	     }
 		}		
 
 	}
-
+    
+	/**
+	 * Method to Delete a Particular AddressBook File 
+	 * @throws IOException
+     * @throws JsonMappingException
+     * @throws JsonMappingException
+	 */
 	public void deleteFile() throws JsonGenerationException, JsonMappingException, IOException 
 	{
 		file = new File(filePath);
@@ -182,6 +256,9 @@ public class AddressBookManagement
 		{
 		 if(file.getName().equals(fileName.getName()))
 		 {
+		  /*
+		   * file.delete is a method to delete a method 	 
+		   */
 		  file.delete();
 		  
 		  System.out.println("\n\t\t\tFile is Deleted..!");

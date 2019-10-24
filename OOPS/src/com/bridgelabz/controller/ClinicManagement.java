@@ -5,9 +5,18 @@ import com.bridgelabz.services.DoctorPatientManager;
 import com.bridgelabz.services.DoctorPatientSearch;
 import com.bridgelabz.utility.Utility;
 
+/**
+ * Class to operate Clinic Management
+ * @author use
+ *
+ */
 public class ClinicManagement
 {
 
+	/**
+	 * Driver method for Clinic Management
+	 * @param args
+	 */
 	public static void main(String[] args)
 	{
 		DoctorPatientManager doctorpatient = new DoctorPatientManager();
@@ -24,17 +33,29 @@ public class ClinicManagement
 			System.out.println("3.Show Data");
 			System.out.println("4.Exit");
 			choice = Utility.integerScanner();
+			/*
+			 * switch Case
+			 */
 			switch (choice) 
 			{
 			case 1:
+				/*
+				 * Method to do multiple operations on Doctor and Patient Details 
+				 */
 				doctorpatient.operation();
 				break;
 
 			case 2:
+				/*
+				 * Method to search the Doctor and Patient by their Attributes
+				 */
 				search.operation();
 				break;
 
 			case 3:
+				/*
+				 * Method to Display the Data 
+				 */
 				data.operation();
 				break;
 

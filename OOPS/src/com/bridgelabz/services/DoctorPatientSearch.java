@@ -12,24 +12,41 @@ import com.bridgelabz.utility.Utility;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+/**
+ * Class To Perform Operation Of Searching
+ * @author Mangesh Mahesh Vinchankar
+ *
+ */
 public class DoctorPatientSearch implements Searching 
 {
 
 	ObjectMapper mapper = new ObjectMapper();
 	Scanner scanner = new Scanner(System.in);
 
+	/*
+	 * Create a list of Doctor 
+	 */
 	static List<Doctor> doctorlist = new ArrayList<>();
+	/*
+	 * Create a list of a Patient
+	 */
 	static List<Patient> patientlist = new ArrayList<>();
 
 	String doctId = "";
 	{
 		try 
 		{
+			/*
+			 * Reading value from Doctor File 
+			 */
 			doctorlist = mapper.readValue(
 					new File("/home/use/workspace/OOPS/src/com/bridgelabz/repository/Doctor.json"),
 					new TypeReference<List<Doctor>>() 
 					{
 					});
+			/*
+			 * Reading value from Patient File 
+			 */
 			patientlist = mapper.readValue(
 					new File("/home/use/workspace/OOPS/src/com/bridgelabz/repository/Patient.json"),
 					new TypeReference<List<Patient>>()
@@ -46,6 +63,9 @@ public class DoctorPatientSearch implements Searching
 		int choice = 0;
 		do 
 		{
+			/*
+			 * Doctor Searching Operation
+			 */
 			System.out.println("********Search Doctor********");
 			System.out.println();
 			System.out.println("1.Search Doctor By ID");
@@ -55,6 +75,9 @@ public class DoctorPatientSearch implements Searching
 			System.out.println();
 			System.out.println("********Search Patient********");
 			System.out.println();
+			/*
+			 * Patient Searching Operation
+			 */
 			System.out.println("5.Search Patient By ID");
 			System.out.println("6.Search Patient By Name");
 			System.out.println("7.Search Patient By Age");
@@ -64,31 +87,55 @@ public class DoctorPatientSearch implements Searching
 			switch (choice)
 			{
 			case 1:
+				/*
+				 * Method to Search by ID 
+				 */
 				searchDoctorById();
 				break;
 			case 2:
+				/*
+				 * Method to search by Name
+				 */
 				searchDoctorByName();
 				break;
 			case 3:
+				/*
+				 * Method to Search by Availability
+				 */
 				searchDoctorByAvaliability();
 				break;
 			case 4:
+				/*
+				 * Method to Search by Specialization
+				 */
 				searchDoctorBySpecilization();
 				break;
 
 			case 5:
+				/*
+				 * Method to Search by ID 
+				 */
 				searchpatientByID();
 				break;
 
 			case 6:
+				/*
+				 * Method to search by Name
+				 */
 				searchpatientByName();
 				break;
 
 			case 7:
+				/*
+				 * Method to Search by Age
+				 */
 				searchpatientByAge();
 				break;
 
 			case 8:
+				/*
+				 * Method to Search by Mobile Number
+				 */
 				searchpatientByMobileNo();
 				break;
 
@@ -103,6 +150,9 @@ public class DoctorPatientSearch implements Searching
 		} while (choice != 9);
 	}
 
+	/**
+	 * Method to Search A Doctor by ID
+	 */
 	public void searchDoctorById() 
 	{
 		
@@ -111,6 +161,9 @@ public class DoctorPatientSearch implements Searching
 		String id = scanner.nextLine();
 		try {
 
+			/*
+			 * .toList is used to Collect all the Doctors
+			 */
 			List<Doctor> listsearch = (List<Doctor>) doctorlist.stream().filter(i -> i.getDoctorId().equals(id))
 					.collect(Collectors.toList());
 			System.out.println("ID       Name            Availability            Specialization");
@@ -127,6 +180,9 @@ public class DoctorPatientSearch implements Searching
 		}
 	}
 
+	/**
+	 * Method to Search Doctor BY Name
+	 */
 	public void searchDoctorByName() 
 	{
 		System.out.println("Enter Doctor Name");
@@ -152,7 +208,9 @@ public class DoctorPatientSearch implements Searching
 
 	}
 
-	
+	/**
+	 * Method to Search Doctor by Their Specialization
+	 */
 	public void searchDoctorBySpecilization()
 	{
 		// TODO Auto-generated method stub
@@ -161,7 +219,9 @@ public class DoctorPatientSearch implements Searching
 		String specialization = scanner.nextLine();
 		try 
 		{
-
+            /*
+             *Java 8 features used Filter(); 
+             */
 			List<Doctor> listsearch = (List<Doctor>) doctorlist.stream()
 					.filter(i -> i.getDoctorSpecialization().equals(specialization)).collect(Collectors.toList());
 			System.out.println("ID\tName\t\tAvailability\t\tSpecialization");
@@ -180,7 +240,9 @@ public class DoctorPatientSearch implements Searching
 
 	}
 
-	
+	/**
+	 * Method to Search Doctor by Availability by AM and PM
+	 */
 	public void searchDoctorByAvaliability() 
 	{
 		// TODO Auto-generated method stub
@@ -207,6 +269,9 @@ public class DoctorPatientSearch implements Searching
 	}
 
 
+	/**
+	 * Method to search Patient by ID
+	 */
 	public void searchpatientByID() 
 	{
 		// TODO Auto-generated method stub
@@ -231,7 +296,9 @@ public class DoctorPatientSearch implements Searching
 		}
 	}
 
-	
+	/**
+	 * Method to Search Patient by Name
+	 */
 	public void searchpatientByName() 
 	{
 		// TODO Auto-generated method stub
@@ -258,7 +325,9 @@ public class DoctorPatientSearch implements Searching
 
 	}
 
-	
+	/**
+	 * Method to Search Patient by its Age
+	 */
 	public void searchpatientByAge()
 	{
 		// TODO Auto-generated method stub
@@ -284,7 +353,9 @@ public class DoctorPatientSearch implements Searching
 
 	}
 
-	
+	/**
+	 * MEthod to Search Patient by Mobile Number
+	 */
 	public void searchpatientByMobileNo() 
 	{
 		// TODO Auto-generated method stub

@@ -23,26 +23,43 @@ public class DoctorPatientManager implements DocPatientInterface
 	Patient patient = new Patient();
 	Appointment app = new Appointment();
 	ObjectMapper mapper = new ObjectMapper();
-
+    /*
+     * List of Doctor Details 
+     */
 	static List<Doctor> doctorlist = new ArrayList<>();
+	/*
+	 * List of Patient Details 
+	 */
 	static List<Patient> patientlist = new ArrayList<>();
+	/*
+	 * List of Appointments
+	 */
 	static List<Appointment> appointmentlist = new ArrayList<>();
 	String doctId = "";
 	{
 		try 
 		{
+			/*
+			 * Reads the Value from Doctor json File 
+			 */
 			doctorlist = mapper.readValue(
-					new File("/home/use/workspace/OOPS/src/com/bridgelabz/repository/Doctor.json"),
+					new File("/home/use/workspace/BridgeLabz/OOPS/src/com/bridgelabz/repository/Doctor.json"),
 					new TypeReference<List<Doctor>>() 
 					{
 					});
+			/*
+			 * Reads the Value from Patient file and Stores it into patientlist
+			 */
 			patientlist = mapper.readValue(
-					new File("/home/admin1/eclipse-workspace/BridgelabzPrograms/src/com/bridgelabz/files/patient.json/home/use/workspace/OOPS/src/com/bridgelabz/repository/Patient.json"),
+					new File("/home/use/workspace/BridgeLabz/OOPS/src/com/bridgelabz/repository/Patient.json"),
 					new TypeReference<List<Patient>>() 
 					{
 					});
+			/*
+			 * reads the value from Appointment file and Stores it into Appointment List
+			 */
 			appointmentlist = mapper.readValue(new File(
-					"/home/use/workspace/OOPS/src/com/bridgelabz/repository/Appointment.json"),
+					"/home/use/workspace/BridgeLabz/OOPS/src/com/bridgelabz/repository/Appointment.json"),
 					new TypeReference<List<Appointment>>() 
 			{
 			});
@@ -53,6 +70,9 @@ public class DoctorPatientManager implements DocPatientInterface
 		}
 	}
 
+	/**
+	 * Method to Do Operations on Doctor and Patient 
+	 */
 	public void operation()
 	{
 		int choice = 0;
@@ -71,34 +91,58 @@ public class DoctorPatientManager implements DocPatientInterface
 			switch (choice) 
 			{
 			case 1:
+				/*
+				 * Method to Add the Doctor in Clinic
+				 */
 				addDoctor();
 				break;
 
 			case 2:
+				/*
+				 * Method to Edit the Details of Doctors
+				 */
 				editDoctor();
 				break;
 
 			case 3:
+				/*
+				 * Method to Delete The Doctor from Clinique
+				 */
 				deleteDoctor();
 				break;
 
 			case 4:
+				/*
+				 * Method to Add the Patient
+				 */
 				addPatient();
 				break;
 
 			case 5:
+				/*
+				 * Method to Edit the Patient Details
+				 */
 				editPatient();
 				break;
 
 			case 6:
+				/*
+				 * Method to Delete the Patients Details
+				 */
 				deletePatient();
 				break;
 
 			case 7:
+				/*
+				 * Method to Save the Operations
+				 */
 				save();
 				break;
 
 			case 8:
+				/*
+				 * Method to take Appointment of a Doctor
+				 */
 				appointment();
 				break;
 
@@ -115,27 +159,44 @@ public class DoctorPatientManager implements DocPatientInterface
 		} while (choice != 9);
 	}
 
+	 /**
+	  * Method to Add Doctor in Clinique 
+	  */
 	public void addDoctor() 
 	{
 		try 
 		{
-
+            /*
+             * Enter Doctor id
+             */
 			System.out.println("Enter Doctor Id");
 			String doctId = sc.nextLine();
 			doctor.setDoctorId(doctId);
-
+            
+			/*
+			 * Enter Doctor Name 
+			 */
 			System.out.println("\nEnter Doctor Name");
 			String doctorName1 = sc.nextLine();
 			doctor.setDoctorName(doctorName1);
 
+			/*
+			 * Enter Doctor Availability
+			 */
 			System.out.println("Enter Time of Doctor Availability");
 			String doctorAvailibity1 = sc.nextLine();
 			doctor.setDoctorAvailibility(doctorAvailibity1);
-
+            
+			/*
+			 *Enter Doctor Specialization 
+			 */
 			System.out.println("Enter Doctor in Specialization");
 			String doctorSpecalization1 = sc.nextLine();
 			doctor.setDoctorSpecialization(doctorSpecalization1);
 
+			/*
+			 * Add the Information in doctorlist
+			 */
 			Doctor temp = new Doctor(doctId, doctorName1, doctorAvailibity1, doctorSpecalization1);
 			{
 				doctorlist.add(temp);
@@ -150,6 +211,9 @@ public class DoctorPatientManager implements DocPatientInterface
 
 	}
 
+	/**
+	 * Method to Edit a Doctor Details
+	 */
 	public void editDoctor() 
 	{
 
@@ -166,13 +230,18 @@ public class DoctorPatientManager implements DocPatientInterface
 
 				do
 				{
-
+                    /*
+                     * To Edit the Doctor Details 
+                     */
 					System.out.println("1.DoctorId");
 					System.out.println("2.Doctor Name");
 					System.out.println("3.Doctor Availibility");
 					System.out.println("4.Doctor specialization");
 					System.out.println("5.Exit");
 					choice1 = Utility.integerScanner();
+					/*
+					 * switch Case
+					 */
 					switch (choice1)
 					{
 					case 1:
@@ -220,6 +289,9 @@ public class DoctorPatientManager implements DocPatientInterface
 
 	}
 
+	/**
+	 * Method to Delete Doctor
+	 */
 	public void deleteDoctor() 
 	{
 		try {
@@ -229,6 +301,9 @@ public class DoctorPatientManager implements DocPatientInterface
 			for (i = 0; i < doctorlist.size(); i++)
 			{
 				Doctor temp = doctorlist.get(i);
+				/*
+				 * if Doctor ID matches the Id that User Want To Delete Then Remove The Doctor And Its Details 
+				 */
 				if (temp.getDoctorId().equals(id)) 
 				{
 					doctorlist.remove(i);
@@ -243,9 +318,15 @@ public class DoctorPatientManager implements DocPatientInterface
 
 	}
 
+	/**
+	 * Method to add the Patient in Clinique 
+	 */
 	public void addPatient()
 	{
 		try {
+			/*
+			 * Enter the Patient Details which you want to add in Clinique
+			 */
 			System.out.println("Enter Patient Id");
 			String patientId = sc.nextLine();
 			patient.setPatientId(patientId);
@@ -262,6 +343,9 @@ public class DoctorPatientManager implements DocPatientInterface
 			String mobno = sc.nextLine();
 			patient.setMobileNo(mobno);
 
+			/*
+			 * Add the Details in Patientlist
+			 */
 			Patient temp = new Patient(patientName, patientId, mobno, age);
 			{
 
@@ -277,6 +361,9 @@ public class DoctorPatientManager implements DocPatientInterface
 
 	}
 
+	/**
+	 * Method to Edit the Patient
+	 */
 	public void editPatient() 
 	{
 
@@ -294,6 +381,9 @@ public class DoctorPatientManager implements DocPatientInterface
 				do
 				{
 
+					/*
+					 * Enter the choice to which Details you want to Edit in Patient List
+					 */
 					System.out.println("1.PatientId");
 					System.out.println("2.Patinet Name");
 					System.out.println("3.Patient Age");
@@ -303,18 +393,27 @@ public class DoctorPatientManager implements DocPatientInterface
 					switch (choice1) 
 					{
 					case 1:
+						/*
+						 * For PatientID
+						 */
 						System.out.println("Enter Patient Id");
 						String id = sc.nextLine();
 						patientlist.get(i).setPatientId(id);
 						break;
 
 					case 2:
+						/*
+						 * For Patient Name
+						 */
 						System.out.println("Enter Patient Name");
 						String name = sc.nextLine();
 						patientlist.get(i).setPatientName(name);
 						break;
 
 					case 3:
+						/*
+						 * For Patient Age
+						 */
 						System.out.println("Enter Patient Age");
 						String age = sc.nextLine();
 						patientlist.get(i).setAge(age);
@@ -322,6 +421,9 @@ public class DoctorPatientManager implements DocPatientInterface
 						break;
 
 					case 4:
+						/*
+						 * For Patient Mobile Number
+						 */
 						System.out.println("Enter Mobile Number");
 						String mobno = sc.nextLine();
 						patientlist.get(i).setMobileNo(mobno);
@@ -348,6 +450,9 @@ public class DoctorPatientManager implements DocPatientInterface
 
 	}
 
+	/**
+	 * Method to Delete Patient from CLinique
+	 */
 	public void deletePatient() 
 	{
 		try {
@@ -356,6 +461,9 @@ public class DoctorPatientManager implements DocPatientInterface
 			int count = 0;
 			for (Patient patient : patientlist) 
 			{
+				/*
+				 * If Patient id get matched with user provided id then remove the patient
+				 */
 				if (patient.getPatientId().equals(id)) 
 				{
 					patientlist.remove(count);
@@ -369,19 +477,22 @@ public class DoctorPatientManager implements DocPatientInterface
 		System.out.println("Record Deleted");
 	}
 
+	/**
+	 * Method to save the details in a File 
+	 */
 	public void save() 
 	{
 		try 
 		{
 			mapper.writeValue(
-					new File("/home/use/workspace/OOPS/src/com/bridgelabz/repository/Doctor.json"),
+					new File("/home/use/workspace/BridgeLabz/OOPS/src/com/bridgelabz/repository/Doctor.json"),
 					doctorlist);
 			mapper.writeValue(
-					new File("/home/use/workspace/OOPS/src/com/bridgelabz/repository/Patient.json"),
+					new File("/home/use/workspace/BridgeLabz/OOPS/src/com/bridgelabz/repository/Patient.json"),
 					patientlist);
 			mapper.writeValue(
 					new File(
-					"/home/use/workspace/OOPS/src/com/bridgelabz/repository/Appointment.json"),
+					"/home/use/workspace/BridgeLabz/OOPS/src/com/bridgelabz/repository/Appointment.json"),
 					appointmentlist);
 		} 
 		catch (Exception e) 
@@ -392,9 +503,14 @@ public class DoctorPatientManager implements DocPatientInterface
 		System.out.println("Records Saved");
 	}
 
-
+    /**
+     * Method to arrange an appointment between Doctor and Patient
+     */
 	public void appointment() 
 	{
+		/*
+		 * Enter Doctor Details 
+		 */
 		System.out.println("Enter Doctor Id");
 		String id = sc.nextLine();
 
@@ -404,6 +520,9 @@ public class DoctorPatientManager implements DocPatientInterface
 		System.out.println("Enter Doctor Availability ");
 		String available = sc.nextLine();
 
+		/*
+		 * Enter the patient Details 
+		 */
 		System.out.println("Enter Patient Id");
 		String patientid = sc.nextLine();
 
@@ -415,13 +534,17 @@ public class DoctorPatientManager implements DocPatientInterface
 
 		
 //		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-		DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy  HH:mm:ss");
+		@SuppressWarnings("unused")
+		DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		LocalDateTime dateTimeNow = LocalDateTime.now();
 //		LocalDateTime tomorrow = dateTimeNow.plusDays(1);
 		String time = dateTimeNow.toString();
 		
 		try 
 		{
+			/*
+			 * filter() is a Java 8 feature of stream 
+			 */
 			Doctor temp = (Doctor) doctorlist.stream().filter(i -> i.getDoctorId().equals(id))
 					.collect(Collectors.toList()).get(0);
 			if (temp.getDoctorAvailibility().equals(available)) 

@@ -23,18 +23,27 @@ public class DisplayData
 	{
 		try
 		{
+			/*
+			 * Reading data from Doctor File
+			 */
 			doctorlist = mapper.readValue(
-					new File("/home/use/workspace/OOPS/src/com/bridgelabz/repository/Doctor.json"),
+					new File("/home/use/workspace/BridgeLabz/OOPS/src/com/bridgelabz/repository/Doctor.json"),
 					new TypeReference<List<Doctor>>()
 					{
 					});
+			/*
+			 * Reading data from Patient File
+			 */
 			patientlist = mapper.readValue(
-					new File("/home/use/workspace/OOPS/src/com/bridgelabz/repository/Patient.json"),
+					new File("/home/use/workspace/BridgeLabz/OOPS/src/com/bridgelabz/repository/Patient.json"),
 					new TypeReference<List<Patient>>() 
 					{
 					});
+			/*
+			 * Reading data from Appointment File
+			 */
 			applist = mapper.readValue(new File(
-					"/home/use/workspace/OOPS/src/com/bridgelabz/repository/Appointment.json"),
+					"/home/use/workspace/BridgeLabz/OOPS/src/com/bridgelabz/repository/Appointment.json"),
 					new TypeReference<List<Appointment>>()
 			{
 			});
@@ -78,6 +87,10 @@ public class DisplayData
 		} while (choice != 4);
 	}
 
+	/**
+	 * Method to Display Doctors Details
+	 * @param list
+	 */
 	public void printDoctorData(List<Doctor> list)
 	{
 		System.out.println("\tID"
@@ -98,6 +111,10 @@ public class DisplayData
 		
 	}
 
+	/**
+	 * Method to Print Patient data
+	 * @param list
+	 */
 	public void printPatientData(List<Patient> list) 
 	{
 		System.out.println("ID\tName\t\tAge\tMobile Number");
@@ -109,6 +126,10 @@ public class DisplayData
 		}
 	}
 
+	/**
+	 * Method to Print Appoinments Data
+	 * @param list
+	 */
 	private void printAppointmentData(List<Appointment> list) 
 	{
 		

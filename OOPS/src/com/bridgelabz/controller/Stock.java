@@ -16,13 +16,19 @@ public class Stock {
 
 	public static List<Stocks> list = new ArrayList<Stocks>();
 	
-	
+	/**
+	 * Driver method to Stock Implementation
+	 * @param args
+	 * @throws JsonParseException
+	 * @throws JsonMappingException
+	 * @throws IOException
+	 */
 	public static void main(String[] args) throws JsonParseException, JsonMappingException, IOException {
 		
 		ObjectMapper mapper = new ObjectMapper();
-		File file=new File("/home/use/workspace/Stock/stockfile.json");
+		File file=new File("/home/use/workspace/BridgeLabz/OOPS/src/com/bridgelabz/repository/stockfile.json");
 		list = mapper.readValue(file, new TypeReference<List<Stocks>>(){});
-		//System.out.println(list);
+		System.out.println(list);
 		long totalPriceOfShare;
 		System.out.println("******Stock Report******");
 		System.out.println();
@@ -30,7 +36,10 @@ public class Stock {
 		System.out.println();
 		for(int i=0;i<3;i++)
 		{
-			totalPriceOfShare=(long) (list.get(i).getNumber_shares()*list.get(i).getPrice());
+			/*
+			 * It calculates the Total Price of Shares
+			 */
+			totalPriceOfShare=(long)(list.get(i).getNumber_shares()*list.get(i).getPrice());
 			System.out.println(""+list.get(i).getShare_name()+"\t"+list.get(i).getNumber_shares()+"\t\t"+
 			list.get(i).getPrice()+"\t\t"+totalPriceOfShare);
 		}

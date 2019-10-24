@@ -10,14 +10,22 @@ import com.bridgelabz.model.Person;
 import com.bridgelabz.services.AddressBookManagement;
 import com.bridgelabz.utility.Utility;
 
-
+/**
+ *AddressBookDriver class is driver class for AddressBook
+ */
 public class AddressBookDriver{
 	static Scanner scanner = new Scanner(System.in);
 	static File file;
 	static String filename;
-	static String filePath = "/home/use/workspace/AddressBook/src/com/bridgelabz/repository";
+	static String filePath = "/home/use/workspace/BridgeLabz/OOPS/src/com/bridgelabz/repository";
 	static List<Person> arrayList=AddressBookManagement.getList();
 	
+	/**
+	 * Driver Main Method of ADDRESS BOOK
+	 * @param args
+	 * @throws ParseException
+	 * @throws IOException
+	 */
 	public static void main(String[] args) throws ParseException, IOException {
 		AddressBookManagement action = new AddressBookManagement();
 		Utility utility = new Utility();
@@ -36,9 +44,15 @@ public class AddressBookDriver{
 			System.out.print("\n\t\t\t\tEnter Choice : ");
 			
 			int choice = utility.integerScanner();
-
+            
+			/*
+			 * Switch case
+			 */
 			switch (choice) {
 			case 1:
+				/*
+				 * MEthod to Create new ADDRESS BOOK
+				 */
 				action.createNewAddressBook();
 				break;
 
@@ -46,6 +60,9 @@ public class AddressBookDriver{
 
 				System.out.println();
 				file = new File(filePath);
+				/*
+				 * It reads the list of Files on File PAth
+				 */
 				File[] fileList = file.listFiles();
 				System.out.println("\t\t\t\t	 LIST_OF_FILE");
 				System.out.println("\t\t\t\t-----------------------------");
@@ -58,18 +75,30 @@ public class AddressBookDriver{
 				}
 				System.out.print("\n\t\t\tEnter the File Name Where you want to Add Information :");
 				filename = scanner.next();
+				/*
+				 * Method to Open a Particular ADDRESS BOOK
+				 */
 				arrayList = action.openAddressBook(filename);
 				break;
 
 			case 3:
+				/*
+				 * MEthod to save the changes made by the User using MAPPER 
+				 */
 				action.save(arrayList);
 				break;
 
 			case 4:
+				/*
+				 * Method to Change the name of Address Book 
+				 */
 				action.saveAs();
 				break;
 
 			case 5:
+				/*
+				 * Method to Delete the AddressBook File
+				 */
 				action.deleteFile();
 				break;
 

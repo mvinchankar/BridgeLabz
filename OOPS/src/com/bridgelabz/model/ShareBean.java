@@ -1,6 +1,9 @@
 package com.bridgelabz.model;
 
-public class ShareBean {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class ShareBean implements Serializable{
 	
 	private int amount;
 	private String symbol;

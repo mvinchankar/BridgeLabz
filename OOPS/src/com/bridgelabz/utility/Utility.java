@@ -47,11 +47,11 @@ public class Utility
  
  
   private static class SingletonHelper{
-      private static final Utility UTILITY = new Utility();
+      private static final Utility util = new Utility();
   }
   
   public static Utility getInstance(){
-      return SingletonHelper.UTILITY;
+      return SingletonHelper.util;
   }
 
   
