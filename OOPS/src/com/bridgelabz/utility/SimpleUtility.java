@@ -107,10 +107,10 @@ public static QueueUtility<String> cardSort(String playercard[][])
 		QueueUtility<String> temp = new QueueUtility<String>();
 		for (int j = 0; j < playercard[i].length; j++)
 		{
-			temp.enqueue(playercard[i][j]);
+			temp.enQueue(playercard[i][j]);
 			
 		}
-		sortedcard.enqueue(temp.toString());
+		sortedcard.enQueue(temp.toString());
 	}
 	return sortedcard;
 }

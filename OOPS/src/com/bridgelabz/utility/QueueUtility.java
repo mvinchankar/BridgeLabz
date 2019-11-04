@@ -1,93 +1,68 @@
 package com.bridgelabz.utility;
 
-public class QueueUtility<T> 
-{
+public class QueueUtility <T>{
+	class Node<T>
+	{
+		 T data;
+		 Node<T> link;
+		 public Node()
+		 {
+			 this.data=null;
+			 this.link=null;
+		 }
+		 public T getData()
+		 {
+			 return data;
+		 }
+		 public Node<T> getLink()
+		 {
+			 return link;
+		 }
+	}
+	
+	Node<T> rear, front;
 
-	class node<T>
-	{
-		T data;
-		node next;
+	public void enQueue(T data) {
+		Node<T> temp = new Node<>();
+		temp.data = data;
+		if (rear == null) {
+			front = temp;
+			rear = temp;
+			return;
+		}
+		rear.link = temp;
+		rear = temp;
 	}
-	
-	node front;
 
-	public void enqueue(T item)
-	{
-		node newNode = new node();
-		newNode.data = item;
-		newNode.next = null;
-		
-		if(front == null)
-		{
-			front = newNode;
+	public T deQueue() {
+		T data = null;
+		if (front == null) {
+			System.out.println("Queue Underflow");
+		} else if (front == rear) {
+			data = front.data;
+			front = null;
+			rear = null;
+		} else {
+			data = front.data;
+			front = front.link;
 		}
-		else
-		{
-			node traversingNode;
-			traversingNode = front;
-			while(traversingNode.next != null)
-			{
-				traversingNode = traversingNode.next;	
-			}
-			traversingNode.next = newNode;
-		}
+		return data;
 	}
-	
-	public void dequeue()
-	{
-		front = front.next;
-	}
-	
-	
-	public boolean isEmpty()
-	{
-		if(front == null)
-		{
-		return true;
-		}
-		else
-		{
+
+	public boolean isEmpty() {
+		if (front == null) {
+			return true;
+		} else {
 			return false;
 		}
-		
 	}
-	
-	
-	public int size()
-	{
-		
-		int counter=0;
-		node traversingNode = front;
-		while(traversingNode != null)
-		{
-			counter++;
-			traversingNode = traversingNode.next;
+
+	public void display() {
+		Node<T> node = front;
+		while (node != null) {
+			System.out.println(node.data);
+			node = node.link;
 		}
-		//counter++;
-		return counter;			
-		
 	}
-	
-	public void showFullQueue()
-	{
-		node traversingNode;
-		try
-		{
-			traversingNode = front;
-			System.out.print(front.data+"  ");
-			while(traversingNode.next != null)
-			{
-				
-				traversingNode = traversingNode.next;
-				System.out.print(traversingNode.data+"  ");
-			}
-		}
-		catch(NullPointerException e)
-		{
-			System.out.println("Queue is empty");
-		}
-		
-	}
-	
 
 }

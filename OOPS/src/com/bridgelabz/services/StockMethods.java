@@ -82,7 +82,7 @@ public class StockMethods implements StockInterface
 				    	/*
 				    	 * This Enqueue the Transaction in a Queue with Stoc Symbol
 				    	 */
-						timeOfTransaction.enqueue(date.concat("-->".concat(symbol)));
+						timeOfTransaction.enQueue(date.concat("-->".concat(symbol)));
 					}
 				}
 			}
@@ -103,7 +103,7 @@ public class StockMethods implements StockInterface
 			mapper.writerWithDefaultPrettyPrinter().writeValue(file, sharesList);
 			localList.clear();
 			symbolTransaction.push(symbol.concat("-").concat("Bought"));
-			timeOfTransaction.enqueue(date.concat("-".concat(symbol)));
+			timeOfTransaction.enQueue(date.concat("-".concat(symbol)));
 		}
 	}
     
@@ -136,7 +136,7 @@ public class StockMethods implements StockInterface
 						sharesList.getStockList().get(i).setAmount(de);
 						mapper.writerWithDefaultPrettyPrinter().writeValue(file, sharesList);
 						symbolTransaction.push(symbol.concat("-").concat("Sold"));
-						timeOfTransaction.enqueue(date.concat("-".concat(symbol)));
+						timeOfTransaction.enQueue(date.concat("-".concat(symbol)));
 					}
 					else if(i==localList.size()-1)
 					{
@@ -278,7 +278,7 @@ public class StockMethods implements StockInterface
 	 */
 	public void timeOfTransaction()
 	{
-		timeOfTransaction.showFullQueue();
+		timeOfTransaction.display();
 	}
 	
 }
