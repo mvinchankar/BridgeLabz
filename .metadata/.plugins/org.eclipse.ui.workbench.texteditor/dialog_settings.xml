@@ -8,6 +8,7 @@
 		<item key="isRegEx" value="false"/>
 		<item key="selection" value=""/>
 		<list key="findhistory">
+			<item value="public interface ItemElement {"/>
 			<item value=" public static void CelsiustoFahrenhiet(double celsius) {"/>
 		</list>
 		<list key="replacehistory">
